@@ -1,0 +1,11 @@
+{
+"name":{"message":"VK Styles Clean"},
+"description":{"message":"A fork of the original VK Styles extension with all malicious code removed. Themes, colors, backgrounds and fonts for VKontakte."},
+"on":{"message":"turn on theme"},
+"off":{"message":"turn off theme"},
+"reset":{"message":"Default theme settings"},
+"appReset":{"message":"App reset"},
+"err":{"message":"Error"},
+"eye":{"message":"Activate dropper"},
+"lang":{"message":"0"}
+}

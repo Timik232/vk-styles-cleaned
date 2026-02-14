@@ -1,0 +1,11 @@
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# GitHub Copilot instructions
+.github/

@@ -1,0 +1,35 @@
+{
+	"version": "2.0.0.0",
+	"name": "__MSG_name__",
+	"short_name": "VK Styles Clean",
+	"description": "__MSG_description__",
+	"author": "Claude Opus 4.6",
+	"default_locale": "en",
+	"permissions": [ "tabs", "scripting", "contextMenus", "storage" ],
+	"host_permissions": [ "https://vk.com/*", "https://*.vk.com/*" ],
+	"optional_permissions": [ "activeTab" ],
+	"background": { "service_worker": "0.js" },
+	"content_scripts": [ {
+		"js": [ "1.js" ],
+		"matches": [ "https://vk.com/*", "https://*.vk.com/*" ],
+		"run_at": "document_start"
+	}, {
+		"js": [ "2.js" ],
+		"matches": [ "https://vk.com/*", "https://*.vk.com/*" ],
+		"run_at": "document_start",
+		"world": "MAIN"
+	} ],
+	"commands": {
+		"pause": { "description": "Pause", "global": true, "suggested_key": { "default": "MediaPlayPause" } },
+		"prev": { "description": "Previous", "global": true, "suggested_key": { "default": "MediaPrevTrack" } },
+		"next": { "description": "Next", "global": true, "suggested_key": { "default": "MediaNextTrack" } },
+		"stop": { "description": "Stop", "global": true, "suggested_key": { "default": "MediaStop" } },
+		"eye": { "description": "__MSG_eye__", "global": false, "suggested_key": { "default": "Alt+Z" } }
+	},
+	"action": {},
+	"icons": {
+		"128": "i/128.png"
+	},
+	"manifest_version": 3,
+	"web_accessible_resources": [ { "resources": ["*"], "matches": [ "https://vk.com/*", "https://*.vk.com/*" ] }]
+}
