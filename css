@@ -1686,10 +1686,6 @@ html.Pl.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -1px!imp
 html.Pl.ns #side_bar_inner{margin:var(--header-height) 0 0 -16px!important;border-radius:0 0 20px 0!important}
 html.Pl.ns.mb #side_bar_inner:after{left:0;right:unset;background:var(--nsRightCorner)}
 
-html.sb:not(.mm) #side_bar_inner,html.sb:not(.mm) #layout_sidebar>[class*=LeftMenu]{background-color:var(--n15e)!important;box-shadow:var(--bs)!important;border-radius:var(--ra)!important;padding:12px 8px!important;margin-top:8px!important}
-html.sb.ns:not(.mm) #side_bar_inner,html.sb.ns:not(.mm) #layout_sidebar>[class*=LeftMenu]{border-radius:0 0 0 var(--ra)!important}
-html.sb.Pl.ns:not(.mm) #side_bar_inner,html.sb.Pl.ns:not(.mm) #layout_sidebar>[class*=LeftMenu]{border-radius:0 0 var(--ra) 0!important}
-
 html.mm #side_bar ol li>:first-child{width:20px!important;box-sizing:content-box!important}
 .left_menu_nav_wrap .ui_actions_menu_wrap .ui_actions_menu{top:initial;bottom:31px}
 

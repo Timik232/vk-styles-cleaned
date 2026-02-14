@@ -299,7 +299,7 @@ sync=(e,k,s)=>{	//log('sync('+e+','+k+','+s+')');
 	switch(e){
 		case 1:let a=sync.a||{},T=sync.T;k.split(',').forEach(e=>{a[e]=(o.st?o.st:st_)[e],o.st&&(o.st[e]=a[e])});sync.a=a;if(T)clearTimeout(T);sync.T=setTimeout(()=>{try{L.st_=JSON.stringify(a)}catch(e){L.clear();L.st_=JSON.stringify(a)};sync(4);sync.a={};!s&&h(e)},200);break;
 		case 2:o.st?(o.st=Object.assign(o.st,JSON.parse(L.st_))):(st_=Object.assign(st_,JSON.parse(L.st_)));
-		case 3:st.ap();st.pt();st.io();st.q();st.sl();st.ol();st.op();st.em();st.po();st.ra();st.pc();st.rm();st.imn();st.ima();st.imr();st.imu();st.sb();st.nl();st.ab();st.fc();st.oc(),st.lc(),st.kc();st.uc();st.vp();st.ar();st.e();st.es();st.vc();st.fs();st.bgs();st.bgr();st.bgp();st.bga();st.bt();st.bc();st.bs();st.ts();st.tc();st.hc();st.ht();st.mc();st.mb();st.mm();st.mf();st.bgc();st.bg(0,n(st_.i));st.fn(0,n(st_.f));c();st.t();st.btr();st.aw();h();break;
+		case 3:st.ap();st.pt();st.io();st.q();st.sl();st.ol();st.op();st.em();st.po();st.ra();st.pc();st.rm();st.imn();st.ima();st.imr();st.imu();st.nl();st.ab();st.fc();st.oc(),st.lc(),st.kc();st.uc();st.vp();st.ar();st.e();st.es();st.vc();st.fs();st.bgs();st.bgr();st.bgp();st.bga();st.bt();st.bc();st.bs();st.ts();st.tc();st.hc();st.ht();st.mc();st.mb();st.mm();st.mf();st.bgc();st.bg(0,n(st_.i));st.fn(0,n(st_.f));c();st.t();st.btr();st.aw();h();break;
 		case 4:cpw.dispatchEvent(new CustomEvent('sync'))
 	}
 },
@@ -406,7 +406,6 @@ s:()=>{
 				case 'cp_imr':st.imr(1);break;
 				case 'cp_imub':st.imu(1);break;
 				case 'cp_aw':st.aw(1);break;
-				case 'cp_sb':st.sb(1);break;
 				case 'cp_nl':st.nl(1);break;
 				case 'cp_ed':st.eye();break;
 
@@ -1475,11 +1474,6 @@ imuc:e=>{			//log('st.imuc('+e+')');
 	document.querySelectorAll('div.ConvoListItemWrapper[data-imu]').forEach(m=>{delete m.dataset.imu});
 	if(st_.imu)st.imu();
 },
-sb:e=>{				//log('st.sb('+e+')');
-	let t=st_.sb=e?st_.sb<1?++st_.sb:0:st_.sb||0;
-	b.classList[t?'add':'remove']('sb');cp_sb.classList[t?'add':'remove']('a');
-	sync(e,'sb')
-},
 nl:e=>{				//log('st.nl('+e+')');
 	let t=st_.nl=e?st_.nl<1?++st_.nl:0:st_.nl||0;
 	b.classList[t?'add':'remove']('nl');cp_nl.classList[t?'add':'remove']('a');
@@ -2089,8 +2083,6 @@ l=lang()?{
 	es:'Эмодзи',
 	et:'Окно выбора',
 	ra:'Уменьшить округление аватарок',
-	sb:'Фон боковой панели',
-	sbInfo:'Добавляет фон, обводку и тень боковой панели как у остальных блоков',
 	nl:'Скрыть задний слой',
 	nlInfo:'Скрывать задний слой при открытии всплывающих окон',
 	Color:'Цвет',
@@ -2301,8 +2293,6 @@ l=lang()?{
 	es:'Emojis',
 	et:'Selection box',
 	ra:'Decrease rounding avatars',
-	sb:'Sidebar background',
-	sbInfo:'Adds background, border and shadow to the sidebar like other blocks',
 	nl:'Hide back layer',
 	nlInfo:'Hide back layer when popups open',
 	Color:'Color',
@@ -2570,7 +2560,6 @@ cpw.innerHTML=`<div id="cp_s" ${st_.pv?'class="h"':''}></div><div id="cp"><form>
 	<div id="cp_q" class="cp_ht checkbox" data-tt="st.tt(this,'${l.qInfo}',0)">${l.q}</div>
 	<div id="cp_aw" class="cp_ht checkbox" data-tt="st.tt(this,'${l.awInfo}',0)">${l.aw}</div>
 	<div id="cp_po" class="cp_ht checkbox">${l.PageOffset}</div><div class="w"><div class="cp_ht"><input type="range" id="cp_ps"></div></div>
-	<div id="cp_sb" class="cp_ht checkbox" data-tt="st.tt(this,'${l.sbInfo}',0)">${l.sb}</div>
 	<div id="cp_nl" class="cp_ht checkbox" data-tt="st.tt(this,'${l.nlInfo}',0)">${l.nl}</div>
 	<div id="cp_rm" class="cp_ht checkbox" data-tt="st.tt(this,'${l.rmInfo}',0)">${l.rm}</div>
 	<div id="cp_imn" class="cp_ht checkbox" data-tt="st.tt(this,'${l.imnInfo}',0)">${l.imn}</div>
