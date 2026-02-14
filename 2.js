@@ -1438,7 +1438,7 @@ imr:e=>{				//log('st.imr('+e+')');
 	sync(e,'imr')
 },
 imu:e=>{				//log('st.imu('+e+')');
-	let t=st_.imu=e?st_.imu<1?++st_.imu:0:st_.imu??1;
+	let t=st_.imu=e?st_.imu<1?++st_.imu:0:st_.imu||0;
 	cp_imub.classList[t?'add':'remove']('a');
 	let col=st_.imuc||'#cce4ff33';
 	// Update color picker value (strip alpha for color input)
