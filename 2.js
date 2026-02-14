@@ -1459,6 +1459,7 @@ imu:e=>{				//log('st.imu('+e+')');
 			st.imu.mo=new MutationObserver(check);
 		}
 		body&&st.imu.mo.observe(body,{childList:true,subtree:true});
+		if(!body)document.addEventListener('DOMContentLoaded',()=>{st.imu.mo.observe(document.body,{childList:true,subtree:true})},{once:true});
 		check();
 	}else{
 		st.imu.mo&&st.imu.mo.disconnect();
