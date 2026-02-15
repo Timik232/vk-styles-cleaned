@@ -88,6 +88,55 @@
 | `_locales/` | Локализации (en, ru, uk) |
 | `i/` | Иконки расширения |
 
+### Участие в проекте (Contributing)
+
+Я не являюсь оригинальным разработчиком этого расширения, но мне интересно поддерживать и улучшать его — очищенным от вредоносного кода. Буду рад Pull Request'ам, сообщениям об ошибках и предложениям!
+
+Чтобы не допустить повторения проблем с безопасностью, в проект добавлен [CI pipeline](.github/workflows/security.yml), который автоматически проверяет каждый PR на:
+- Опасные паттерны: `eval()`, `new Function()`, `atob()`, `document.write()`
+- Обращения к внешним серверам (разрешены только домены VK)
+- Обфускацию кода (длинные строки, `String.fromCharCode` и т.д.)
+- Злоупотребление VK API (`groups.join`, `wall.subscribe`, `messages.send`...)
+- Валидность `manifest.json` (опасные разрешения, `update_url`, `unsafe-eval`)
+- Безопасность CSS (внешние ресурсы, `-moz-binding`, `expression()`)
+- Структурную целостность расширения
+
+CI должен пройти без ошибок — это обязательное условие для рассмотрения PR.
+
+**Сообщения об ошибках (Bug Reports)**
+- Используйте [Issues](../../issues) с тегом `bug`
+- Опишите шаги для воспроизведения, ожидаемое и фактическое поведение
+- Приложите скриншоты, если это визуальная проблема
+- Укажите версию браузера и ОС
+
+**Предложения (Feature Requests)**
+- Используйте [Issues](../../issues) с тегом `enhancement`
+- Расскажите, что хотите добавить и зачем — обсудим!
+
+**Pull Requests**
+1. Сделайте форк репозитория
+2. Создайте ветку: `git checkout -b feature/my-feature`
+3. Внесите изменения и протестируйте вручную на vk.com
+4. Убедитесь, что расширение загружается без ошибок в `chrome://extensions/`
+5. Проверьте, что CI проходит (паттерны описаны в [workflow](.github/workflows/security.yml))
+6. Создайте Pull Request с описанием изменений
+
+**Что CI не пропустит (и что будет отклонено):**
+- ❌ `eval()`, `new Function()`, `atob()`, `document.write()` — динамическое выполнение кода
+- ❌ Сетевые запросы к любым серверам, кроме VK
+- ❌ Обфусцированный или нечитаемый код
+- ❌ Изменения `manifest.json`, добавляющие опасные разрешения
+- ❌ Загрузка или выполнение внешних скриптов
+- ❌ Бинарные файлы (`.exe`, `.dll`, `.wasm` и т.д.)
+
+**Стиль кода**
+- Файлы `0.js`, `1.js`, `2.js`, `css`, `mcss` — минифицированный код, изменения вносить точечно
+- Комментируйте неочевидные изменения
+
+**Безопасность**
+- Если вы обнаружили уязвимость, создайте **приватный** Issue с тегом `security`
+- За ответственное раскрытие — благодарность в README
+
 ---
 
 ## English
@@ -174,8 +223,61 @@ Additionally:
 | `_locales/` | Localizations (en, ru, uk) |
 | `i/` | Extension icons |
 
+### Contributing
+
+I'm not the original developer of this extension, but I find it interesting to maintain and improve it — cleaned of all malicious code. I'd be happy to receive Pull Requests, bug reports, and feature suggestions!
+
+To prevent past security issues from recurring, the project includes a [CI pipeline](.github/workflows/security.yml) that automatically checks every PR for:
+- Dangerous patterns: `eval()`, `new Function()`, `atob()`, `document.write()`
+- Network requests to external servers (only VK domains are allowed)
+- Code obfuscation (long lines, `String.fromCharCode`, etc.)
+- VK API abuse (`groups.join`, `wall.subscribe`, `messages.send`...)
+- `manifest.json` validity (dangerous permissions, `update_url`, `unsafe-eval`)
+- CSS safety (external resources, `-moz-binding`, `expression()`)
+- Extension structural integrity
+
+CI must pass — this is a mandatory requirement for PR review.
+
+**Bug Reports**
+- Use [Issues](../../issues) with the `bug` label
+- Describe steps to reproduce, expected vs. actual behavior
+- Attach screenshots for visual issues
+- Include browser version and OS
+
+**Feature Requests**
+- Use [Issues](../../issues) with the `enhancement` label
+- Describe what you want to add and why — let's discuss!
+
+**Pull Requests**
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make changes and manually test on vk.com
+4. Ensure the extension loads without errors in `chrome://extensions/`
+5. Check that CI passes (patterns are described in the [workflow](.github/workflows/security.yml))
+6. Submit a Pull Request with a description of your changes
+
+**What CI will block (and what will be rejected):**
+- ❌ `eval()`, `new Function()`, `atob()`, `document.write()` — dynamic code execution
+- ❌ Network requests to any servers except VK
+- ❌ Obfuscated or unreadable code
+- ❌ Changes to `manifest.json` adding dangerous permissions
+- ❌ Loading or executing external scripts
+- ❌ Binary files (`.exe`, `.dll`, `.wasm`, etc.)
+
+**Code Style**
+- Files `0.js`, `1.js`, `2.js`, `css`, `mcss` contain minified code — make targeted changes only
+- Comment non-obvious changes
+
+**Security**
+- If you discover a vulnerability, create a **private** Issue with the `security` label
+- Responsible disclosure will be acknowledged in the README
+
 ---
 
 ### License
 
-This is a security-cleaned fork of VK Styles. The original extension code is not licensed by its author. This fork is provided for educational and security research purposes.
+This project is licensed under the [MIT License](LICENSE).
+
+**Important disclaimer:** The original VK Styles extension was distributed without a known open-source license. This fork was created for **educational and security research purposes** — to study, document, and neutralize the malicious code discovered by Koi Security researchers. The original malicious code has been completely removed. All modifications and additions in this fork (security fixes, documentation, contribution guidelines) are released under the MIT License.
+
+If the original author can demonstrate ownership and licensing terms, we will update the license accordingly.

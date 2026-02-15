@@ -8,4 +8,4 @@ Desktop.ini
 .DS_Store
 
 # GitHub Copilot instructions
-.github/
+.github/copilot-instructions.md

@@ -1,0 +1,340 @@
+name: Security & Quality Checks
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+permissions:
+  contents: read
+
+jobs:
+  # ── Static Analysis: detect suspicious JS patterns ──
+  static-analysis:
+    name: Static Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect network requests (fetch/XMLHttpRequest/WebSocket)
+        run: |
+          echo "=== Scanning for network request patterns ==="
+          PATTERNS='fetch\s*\(|XMLHttpRequest|\.open\s*\(\s*["\x27](GET|POST|PUT|DELETE)|new\s+WebSocket|navigator\.sendBeacon|import\s*\('
+          if grep -rPn "$PATTERNS" --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo ""
+            echo "::error::Detected network request patterns. All network calls must be reviewed."
+            echo "Review the matches above. If these are legitimate VK API calls via existing patterns, add a justification comment in the PR."
+            # Don't fail — some VK API calls are legitimate. Flag for review.
+          else
+            echo "✅ No network request patterns found."
+          fi
+
+      - name: Detect dynamic code execution
+        run: |
+          echo "=== Scanning for dynamic code execution ==="
+          FAIL=0
+          # eval() — always dangerous
+          if grep -rPn '\beval\s*\(' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::eval() detected — this is prohibited."
+            FAIL=1
+          fi
+          # new Function() — code generation
+          if grep -rPn 'new\s+Function\s*\(' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::new Function() detected — dynamic code generation is prohibited."
+            FAIL=1
+          fi
+          # document.write
+          if grep -rPn 'document\.write\s*\(' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::document.write() detected — this is prohibited."
+            FAIL=1
+          fi
+          # setTimeout/setInterval with string argument
+          if grep -rPn '(setTimeout|setInterval)\s*\(\s*["\x27`]' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::setTimeout/setInterval with string argument detected — use function references instead."
+            FAIL=1
+          fi
+          if [ $FAIL -eq 0 ]; then
+            echo "✅ No dynamic code execution patterns found."
+          else
+            exit 1
+          fi
+
+      - name: Detect external URL references
+        run: |
+          echo "=== Scanning for external URLs ==="
+          # Allow vk.com, vk.ru, vkvideo.ru, userapi.com (VK CDN) — block everything else
+          EXTERNAL=$(grep -rPohn 'https?://[a-zA-Z0-9._-]+\.[a-z]{2,}' --include="*.js" --include="*.json" --include="*.html" . 2>/dev/null \
+            | grep -viP '(vk\.com|vk\.ru|vkvideo\.ru|userapi\.com|vkontakte\.ru|chrome\.google\.com|github\.com|koi\.ai|comss\.ru)' || true)
+          if [ -n "$EXTERNAL" ]; then
+            echo "$EXTERNAL"
+            echo ""
+            echo "::warning::External URLs detected (not VK/GitHub). Verify these are safe:"
+            echo "$EXTERNAL"
+          else
+            echo "✅ No suspicious external URLs found."
+          fi
+
+      - name: Detect obfuscation patterns
+        run: |
+          echo "=== Scanning for obfuscation ==="
+          FAIL=0
+          # Very long single lines (>5000 chars) that aren't CSS — possible obfuscated payload
+          for f in $(find . -name "*.js" -not -path "./.github/*"); do
+            LONG_LINES=$(awk 'length > 5000 {print FILENAME":"NR": length="length}' "$f" || true)
+            if [ -n "$LONG_LINES" ]; then
+              echo "::warning::Very long lines in JS (possible obfuscation): $LONG_LINES"
+            fi
+          done
+          # atob() — base64 decode, common in payloads
+          if grep -rPn '\batob\s*\(' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::atob() detected — base64 decoding is a common obfuscation technique."
+            FAIL=1
+          fi
+          # String.fromCharCode with many args — character-by-character string building
+          if grep -rPn 'String\.fromCharCode\s*\([^)]{20,}\)' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::String.fromCharCode with many arguments detected — possible obfuscation."
+            FAIL=1
+          fi
+          if [ $FAIL -eq 0 ]; then
+            echo "✅ No obfuscation patterns found."
+          fi
+          exit $FAIL
+
+      - name: Detect cookie/storage manipulation
+        run: |
+          echo "=== Scanning for cookie/storage access ==="
+          if grep -rPn 'document\.cookie\s*=' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::warning::Cookie write detected. Verify this is not stealing or manipulating session tokens."
+          fi
+          if grep -rPn '\b(localStorage|sessionStorage)\.(setItem|getItem|removeItem|clear)\b' --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "ℹ️ Storage API usage detected (informational, may be legitimate)."
+          fi
+          echo "✅ Cookie/storage scan complete."
+
+      - name: Detect VK API abuse patterns
+        run: |
+          echo "=== Scanning for VK API abuse ==="
+          FAIL=0
+          ABUSE_PATTERNS='groups\.join|wall\.subscribe|account\.ban|messages\.send(?!\.)|friends\.add(?!\.)|settingsGeneral|account\.setInfo|wall\.post\b'
+          if grep -rPn "$ABUSE_PATTERNS" --include="*.js" --include="*.mjs" . 2>/dev/null; then
+            echo "::error::Suspicious VK API calls detected — these methods were used in the original malware."
+            FAIL=1
+          fi
+          if [ $FAIL -eq 0 ]; then
+            echo "✅ No VK API abuse patterns found."
+          else
+            exit 1
+          fi
+
+  # ── Manifest validation ──
+  manifest-check:
+    name: Manifest Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate manifest.json
+        run: |
+          echo "=== Validating manifest.json ==="
+          # Check it's valid JSON
+          python3 -m json.tool manifest.json > /dev/null || { echo "::error::manifest.json is not valid JSON"; exit 1; }
+          echo "✅ Valid JSON"
+
+      - name: Check for dangerous permissions
+        run: |
+          FAIL=0
+          # Disallowed permissions
+          for perm in "nativeMessaging" "debugger" "proxy" "vpnProvider" "webRequestBlocking"; do
+            if grep -q "\"$perm\"" manifest.json; then
+              echo "::error::Dangerous permission '$perm' found in manifest.json"
+              FAIL=1
+            fi
+          done
+          # Check for update_url (auto-update from attacker's server)
+          if grep -q '"update_url"' manifest.json; then
+            echo "::error::update_url found — auto-update from external server is prohibited."
+            FAIL=1
+          fi
+          # Check for key (extension identity pinning)
+          if grep -q '"key"' manifest.json; then
+            echo "::error::'key' field found — extension identity should not be pinned."
+            FAIL=1
+          fi
+          if [ $FAIL -eq 0 ]; then
+            echo "✅ No dangerous permissions or fields found."
+          else
+            exit 1
+          fi
+
+      - name: Check content_security_policy
+        run: |
+          if grep -qP "unsafe-eval|unsafe-inline" manifest.json; then
+            echo "::error::CSP contains unsafe-eval or unsafe-inline — this is prohibited."
+            exit 1
+          fi
+          echo "✅ CSP check passed."
+
+  # ── JSON & locale validation ──
+  json-lint:
+    name: JSON Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate all JSON files
+        run: |
+          FAIL=0
+          for f in $(find . -name "*.json" -not -path "./.github/*" -not -path "./node_modules/*"); do
+            if ! python3 -m json.tool "$f" > /dev/null 2>&1; then
+              echo "::error file=$f::Invalid JSON: $f"
+              FAIL=1
+            else
+              echo "✅ $f"
+            fi
+          done
+          exit $FAIL
+
+      - name: Validate locale structure
+        run: |
+          for locale in _locales/*/messages.json; do
+            echo "Checking $locale..."
+            # Ensure required keys exist
+            for key in "name" "description"; do
+              if ! python3 -c "import json; d=json.load(open('$locale')); assert '$key' in d, 'missing $key'" 2>/dev/null; then
+                echo "::error::$locale is missing required key '$key'"
+                exit 1
+              fi
+            done
+            echo "✅ $locale"
+          done
+
+  # ── CSS validation ──
+  css-lint:
+    name: CSS Safety Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Detect dangerous CSS patterns
+        run: |
+          FAIL=0
+          # CSS can load external resources
+          if grep -Pn 'url\s*\(\s*["\x27]?https?://' css mcss 2>/dev/null | grep -viP '(vk\.com|userapi\.com|vk\.ru)'; then
+            echo "::warning::External URLs in CSS detected (not VK). Verify these are safe."
+          fi
+          # -moz-binding (Firefox XSS vector, rare but dangerous)
+          if grep -Pin '\-moz\-binding' css mcss 2>/dev/null; then
+            echo "::error::-moz-binding detected — this is a known XSS vector."
+            FAIL=1
+          fi
+          # expression() — IE CSS expression (code execution)
+          if grep -Pin 'expression\s*\(' css mcss 2>/dev/null; then
+            echo "::error::CSS expression() detected — this allows code execution."
+            FAIL=1
+          fi
+          # @import with external URL
+          if grep -Pin '@import\s+(url\s*\()?\s*["\x27]?https?://' css mcss 2>/dev/null; then
+            echo "::error::External @import detected — loading external stylesheets is prohibited."
+            FAIL=1
+          fi
+          if [ $FAIL -eq 0 ]; then
+            echo "✅ No dangerous CSS patterns found."
+          fi
+          exit $FAIL
+
+  # ── Diff analysis for PRs ──
+  diff-review:
+    name: PR Diff Analysis
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Analyze changed files
+        run: |
+          echo "=== Changed files ==="
+          git diff --name-only origin/${{ github.base_ref }}...HEAD
+
+          echo ""
+          echo "=== Diff stats ==="
+          git diff --stat origin/${{ github.base_ref }}...HEAD
+
+      - name: Flag large diffs in critical files
+        run: |
+          for f in 0.js 1.js 2.js manifest.json; do
+            if git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -q "^${f}$"; then
+              ADDITIONS=$(git diff origin/${{ github.base_ref }}...HEAD -- "$f" | grep -c '^+[^+]' || true)
+              DELETIONS=$(git diff origin/${{ github.base_ref }}...HEAD -- "$f" | grep -c '^-[^-]' || true)
+              echo "📊 $f: +$ADDITIONS / -$DELETIONS lines"
+              if [ "$ADDITIONS" -gt 50 ]; then
+                echo "::warning file=$f::Large addition (+$ADDITIONS lines) to critical file $f — requires careful security review."
+              fi
+            fi
+          done
+
+      - name: Check for new file additions
+        run: |
+          NEW_FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }}...HEAD || true)
+          if [ -n "$NEW_FILES" ]; then
+            echo "::warning::New files added in this PR:"
+            echo "$NEW_FILES"
+            # Check for executable or suspicious extensions
+            for f in $NEW_FILES; do
+              case "$f" in
+                *.exe|*.dll|*.so|*.dylib|*.bat|*.cmd|*.ps1|*.sh)
+                  echo "::error::Executable file added: $f — this is prohibited."
+                  exit 1
+                  ;;
+                *.wasm)
+                  echo "::error::WebAssembly file added: $f — binary code is prohibited."
+                  exit 1
+                  ;;
+              esac
+            done
+          else
+            echo "✅ No new files added."
+          fi
+
+  # ── Extension structure integrity ──
+  structure-check:
+    name: Extension Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          FAIL=0
+          for f in manifest.json 0.js 1.js 2.js css mcss; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Required file missing: $f"
+              FAIL=1
+            else
+              echo "✅ $f exists"
+            fi
+          done
+          for locale in en ru uk; do
+            if [ ! -f "_locales/$locale/messages.json" ]; then
+              echo "::error::Locale file missing: _locales/$locale/messages.json"
+              FAIL=1
+            else
+              echo "✅ _locales/$locale/messages.json exists"
+            fi
+          done
+          exit $FAIL
+
+      - name: Check for unexpected file types
+        run: |
+          SUSPICIOUS=$(find . -not -path './.git/*' -not -path './.github/*' \
+            -type f \( -name "*.exe" -o -name "*.dll" -o -name "*.so" -o -name "*.wasm" \
+            -o -name "*.bat" -o -name "*.cmd" -o -name "*.ps1" -o -name "*.pyc" \
+            -o -name "*.class" -o -name "*.jar" \) 2>/dev/null || true)
+          if [ -n "$SUSPICIOUS" ]; then
+            echo "::error::Suspicious file types detected:"
+            echo "$SUSPICIOUS"
+            exit 1
+          fi
+          echo "✅ No suspicious file types found."
