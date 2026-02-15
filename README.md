@@ -6,6 +6,8 @@
 
 ## Русский
 
+**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Установка](#установка) · [Использование](#использование) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
+
 ### Описание
 
 **VK Styles Clean** — форк расширения **VK Styles** для Chrome/Chromium с полностью удалённым вредоносным кодом.
@@ -143,6 +145,8 @@ CI должен пройти без ошибок — это обязательн
 ---
 
 ## English
+
+**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [Installation](#installation) · [Usage](#usage) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
 
 ### Description
 
