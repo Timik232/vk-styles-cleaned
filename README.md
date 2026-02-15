@@ -135,7 +135,10 @@ CI должен пройти без ошибок — это обязательн
 
 **Безопасность**
 - Если вы обнаружили уязвимость, создайте **приватный** Issue с тегом `security`
-- За ответственное раскрытие — благодарность в README
+
+### О проекте
+
+Этот репозиторий создан в **образовательных и исследовательских целях** в области информационной безопасности — для изучения, документирования и нейтрализации вредоносного кода, обнаруженного исследователями Koi Security.
 
 ---
 
@@ -270,7 +273,6 @@ CI must pass — this is a mandatory requirement for PR review.
 
 **Security**
 - If you discover a vulnerability, create a **private** Issue with the `security` label
-- Responsible disclosure will be acknowledged in the README
 
 ---
 
