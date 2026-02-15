@@ -142,6 +142,8 @@ CI должен пройти без ошибок — это обязательн
 
 Этот репозиторий создан в **образовательных и исследовательских целях** в области информационной безопасности — для изучения, документирования и нейтрализации вредоносного кода, обнаруженного исследователями Koi Security.
 
+**Disclaimer:** Это неофициальный набор пользовательских стилей, не связанный с компанией VK. Используя это расширение, вы действуете на свой риск и самостоятельно отвечаете за соблюдение правил [vk.com](https://vk.com/terms).
+
 ---
 
 ## English
@@ -287,3 +289,5 @@ This project is licensed under the [MIT License](LICENSE).
 **Important disclaimer:** The original VK Styles extension was distributed without a known open-source license. This fork was created for **educational and security research purposes** — to study, document, and neutralize the malicious code discovered by Koi Security researchers. The original malicious code has been completely removed. All modifications and additions in this fork (security fixes, documentation, contribution guidelines) are released under the MIT License.
 
 If the original author can demonstrate ownership and licensing terms, we will update the license accordingly.
+
+**Disclaimer:** This is an unofficial set of user styles and is not affiliated with VK. By using this extension, you do so at your own risk and are solely responsible for compliance with the [vk.com](https://vk.com/terms) terms of service.
