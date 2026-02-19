@@ -1445,14 +1445,14 @@ imu:e=>{				//log('st.imu('+e+')');
 	if(cp_imuc)cp_imuc.value=col.slice(0,7);
 	if(t){
 		let check=()=>{
-			document.querySelectorAll('div.ConvoListItemWrapper:not([data-imu])').forEach(wrapper=>{
-				wrapper.dataset.imu='1';
+			document.querySelectorAll('div.ConvoListItemWrapper').forEach(wrapper=>{
 				let btn=wrapper.querySelector('button.ConvoListItem');
 				if(!btn)return;
 				let svg=btn.querySelector('svg.vkuiIcon--check_outline_16');
 				let unread=btn.querySelector('div.UnreadCounter');
 				if(svg||unread)wrapper.style.backgroundColor=col;
 				else wrapper.style.backgroundColor='';
+				wrapper.dataset.imu='1';
 			});
 		};
 		if(!st.imu.mo){
