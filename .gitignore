@@ -7,8 +7,9 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# GitHub Copilot instructions
+# GitHub Copilot instructions & agent files
 .github/copilot-instructions.md
+.github/agents/
 
 # VK reference HTML
 *.html
