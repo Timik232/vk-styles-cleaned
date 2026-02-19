@@ -1,0 +1,87 @@
+name: Build & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v2.0.1)'
+        required: true
+        type: string
+      release_notes:
+        description: 'What changed in this version (will be shown in Release description)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build Extension ZIP & Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate version format
+        run: |
+          if ! echo "${{ inputs.version }}" | grep -qP '^v\d+\.\d+\.\d+(\.\d+)?$'; then
+            echo "::error::Version must match format: v1.2.3 or v1.2.3.4"
+            exit 1
+          fi
+
+      - name: Verify manifest version matches
+        run: |
+          MANIFEST_VER=$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])")
+          INPUT_VER="${{ inputs.version }}"
+          INPUT_VER="${INPUT_VER#v}"
+          if [ "$MANIFEST_VER" != "$INPUT_VER" ]; then
+            echo "::warning::manifest.json version ($MANIFEST_VER) differs from release version ($INPUT_VER)."
+            echo "Consider updating manifest.json before release."
+          fi
+
+      - name: Build extension ZIP
+        run: |
+          mkdir -p build
+          zip -r "build/vk-styles-clean-${{ inputs.version }}.zip" \
+            manifest.json \
+            0.js \
+            1.js \
+            2.js \
+            css \
+            mcss \
+            _locales/ \
+            i/ \
+            -x "*.git*" "*.github*"
+          echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.zip"
+          ls -lh build/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.version }}
+          name: ${{ inputs.version }}
+          body: |
+            ## ${{ inputs.version }}
+
+            ${{ inputs.release_notes }}
+
+            ---
+
+            ### Установка / Installation
+
+            1. Скачайте ZIP-архив из Assets ниже
+            2. Распакуйте в отдельную папку
+            3. Откройте `chrome://extensions/`
+            4. Включите «Режим разработчика»
+            5. Нажмите «Загрузить распакованное расширение» и выберите папку
+
+            ---
+
+            1. Download the ZIP from Assets below
+            2. Extract to a folder
+            3. Open `chrome://extensions/`
+            4. Enable "Developer mode"
+            5. Click "Load unpacked" and select the folder
+          files: build/vk-styles-clean-${{ inputs.version }}.zip
+          draft: false
+          prerelease: false
