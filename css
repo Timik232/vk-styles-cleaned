@@ -1658,6 +1658,7 @@ html.rm .nim-dialog.nim-dialog_selected{box-shadow:inset 3px 0 0 0 var(--g3)}
 .pv_photo_wrap{width:max-content}
 
 html.mf #side_bar{position:sticky;top:0!important}
+html.mf #layout_sidebar{position:sticky;top:var(--spa-layout-header-height,48px);align-self:flex-start}
 #side_bar_inner{height:fit-content!important;margin:calc(var(--header-height) + 7px) 0 0 -15px!important;padding:8px 5px 8px 6px!important}
 html.ns #side_bar_inner{margin:var(--header-height) 0 0 -10px!important}
 html.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -25px!important}
