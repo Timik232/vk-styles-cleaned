@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.2.1] - 2026-02-20
+
+### Fixed
+- Скрыт юридический текст внизу сайдбара в мини-режиме («Журнал», «Авторам», реклама)
+
 ## [2.0.2] - 2026-02-20
 
 ### Fixed
@@ -12,7 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Исправлен фон боковой панели — больше не обрезает элементы меню
 - Исправлена совместимость фона и мини-режима при одновременном включении
 - Исправлена битая ссылка на исследование Koi Security в README
-- Скрыт юридический текст внизу сайдбара в мини-режиме
 
 ### Added
 - Добавлена инструкция по установке в Яндекс Браузере
