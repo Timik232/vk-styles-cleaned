@@ -1691,6 +1691,7 @@ html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li{width:36px!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li>a{width:36px!important;padding:6px!important;justify-content:center;overflow:visible!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__label],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__settings],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=separator],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=counter],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=Counter]{display:none!important}
+html.mm #layout_sidebar #ads_wrapper,html.mm #layout_sidebar [class*=Footer__root],html.mm #layout_sidebar [class*=LeftAds],html.mm #layout_sidebar [class*=LeftMenu]>nav~*{display:none!important}
 
 html.mm #side_bar ol li>:first-child{width:20px!important;box-sizing:content-box!important}
 .left_menu_nav_wrap .ui_actions_menu_wrap .ui_actions_menu{top:initial;bottom:31px}
