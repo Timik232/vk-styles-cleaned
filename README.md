@@ -6,7 +6,7 @@
 
 ## Русский
 
-**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Установка](#установка) · [Использование](#использование) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
+**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Установка](#установка) · [Использование](#использование) · [📖 Документация](https://github.com/Timik232/vk-styles-cleaned/wiki) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
 
 ### Описание
 
@@ -55,6 +55,8 @@
 - Галерея тем (видео-обои) сохранена и работает
 
 ### Установка
+
+Подробная инструкция — в [📖 документации](https://github.com/Timik232/vk-styles-cleaned/wiki).
 
 1. Скачайте или клонируйте этот репозиторий
 2. Откройте страницу расширений в браузере:
@@ -150,7 +152,7 @@ CI должен пройти без ошибок — это обязательн
 
 ## English
 
-**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [Installation](#installation) · [Usage](#usage) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
+**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [Installation](#installation) · [Usage](#usage) · [📖 Documentation](https://github.com/Timik232/vk-styles-cleaned/wiki) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
 
 ### Description
 
@@ -199,6 +201,8 @@ Additionally:
 - Theme gallery (video wallpapers) is preserved and functional
 
 ### Installation
+
+Detailed instructions — in the [📖 documentation](https://github.com/Timik232/vk-styles-cleaned/wiki).
 
 1. Download or clone this repository
 2. Open the extensions page in your browser:
