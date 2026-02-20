@@ -598,6 +598,9 @@ mm:e=>{				//log('st.mm('+e+')');
 	let t=st_.mm=e?st_.mm<1?++st_.mm:0:st_.mm||0;
 	b.classList[t?'add':'remove']('mm');
 	cp_mm.classList[t?'add':'remove']('a');
+	forEach('#layout_sidebar [class*=LeftMenu]>nav ol>li>a,#side_bar ol li>:first-child',el=>{
+		if(t){let txt=el.textContent.trim();if(txt)el.title=txt}else el.removeAttribute('title')
+	});
 	sync(e,'mm')
 },
 mf:e=>{				//log('st.mb('+e+')');
