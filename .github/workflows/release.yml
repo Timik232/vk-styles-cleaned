@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version tag (e.g. v2.0.1)'
+        description: 'Version tag (e.g. v2.0.2)'
         required: true
         type: string
       release_notes:
-        description: 'What changed in this version (will be shown in Release description)'
+        description: 'Release notes (Markdown supported, use \n for new lines)'
         required: true
         type: string
 
@@ -55,33 +55,54 @@ jobs:
           echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.zip"
           ls -lh build/
 
+      - name: Build extension RAR
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq rar
+          rar a "build/vk-styles-clean-${{ inputs.version }}.rar" \
+            manifest.json \
+            0.js \
+            1.js \
+            2.js \
+            css \
+            mcss \
+            _locales/ \
+            i/ \
+            -x*.git* -x*.github*
+          echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.rar"
+          ls -lh build/
+
+      - name: Format release notes
+        id: notes
+        run: |
+          # Convert literal \n to actual newlines for Markdown rendering
+          NOTES=$(echo "${{ inputs.release_notes }}" | sed 's/\\n/\n/g')
+          echo "formatted<<EOF" >> $GITHUB_OUTPUT
+          echo -e "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.version }}
-          name: ${{ inputs.version }}
+          name: VK Styles Clean ${{ inputs.version }}
           body: |
             ## ${{ inputs.version }}
 
-            ${{ inputs.release_notes }}
+            ${{ steps.notes.outputs.formatted }}
 
             ---
 
             ### Установка / Installation
 
-            1. Скачайте ZIP-архив из Assets ниже
-            2. Распакуйте в отдельную папку
-            3. Откройте `chrome://extensions/`
-            4. Включите «Режим разработчика»
-            5. Нажмите «Загрузить распакованное расширение» и выберите папку
-
-            ---
-
-            1. Download the ZIP from Assets below
-            2. Extract to a folder
-            3. Open `chrome://extensions/`
-            4. Enable "Developer mode"
-            5. Click "Load unpacked" and select the folder
-          files: build/vk-styles-clean-${{ inputs.version }}.zip
+            1. Скачайте архив (ZIP или RAR) из Assets ниже / Download archive from Assets below
+            2. Распакуйте в папку / Extract to a folder
+            3. Откройте страницу расширений / Open extensions page:
+               - **Chrome / Edge:** `chrome://extensions/`
+               - **Яндекс Браузер:** `browser://extensions/`
+            4. Включите «Режим разработчика» / Enable "Developer mode" (top-right toggle)
+            5. «Загрузить распакованное» / "Load unpacked" → выберите папку / select the folder
+          files: |
+            build/vk-styles-clean-${{ inputs.version }}.zip
+            build/vk-styles-clean-${{ inputs.version }}.rar
           draft: false
           prerelease: false
