@@ -56,6 +56,8 @@
 
 ### Установка
 
+Подробная инструкция — в [📖 документации](https://github.com/Timik232/vk-styles-cleaned/wiki).
+
 1. Скачайте или клонируйте этот репозиторий
 2. Откройте страницу расширений в браузере:
    - **Chrome / Edge**: `chrome://extensions/`
@@ -199,6 +201,8 @@ Additionally:
 - Theme gallery (video wallpapers) is preserved and functional
 
 ### Installation
+
+Detailed instructions — in the [📖 documentation](https://github.com/Timik232/vk-styles-cleaned/wiki).
 
 1. Download or clone this repository
 2. Open the extensions page in your browser:
