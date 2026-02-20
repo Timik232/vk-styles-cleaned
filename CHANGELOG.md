@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.3] - 2025-07-16
+
+### Fixed
+- Фон (изображение и видео) больше не пропадает при переключении вкладок и простое
+- Исправлен краш обработчика ошибок VK-видео при отсутствии резервных URL
+- VK-видео и документы автоматически перезагружаются при истечении ссылки
+- YouTube/Vimeo-фоны перезагружаются при длительном простое вкладки (>30 сек)
+
 ## [2.0.2.1] - 2026-02-20
 
 ### Fixed
