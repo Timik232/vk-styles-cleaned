@@ -15,7 +15,7 @@
 Оригинальное расширение VK Styles (500 000+ установок) было обнаружено как вредоносное в ходе исследования компании **Koi Security** и описано в статьях:
 
 - [Comss.ru — «Кампания вредоносных расширений для Chrome с 500 000+ установок»](https://www.comss.ru/page.php?id=19581)
-- [Koi.ai — Malicious Chrome Extensions Campaign](https://koi.ai/blog/2025/06/28/malicious-chrome-extensions/)
+- [Koi.ai — VK Styles: 500K Users Infected](https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts)
 
 ### Что делало оригинальное расширение
 
@@ -159,7 +159,7 @@ CI должен пройти без ошибок — это обязательн
 The original VK Styles extension (500,000+ installs) was discovered to be malicious by **Koi Security** researchers:
 
 - [Comss.ru — "Malicious Chrome Extension Campaign with 500K+ Installs"](https://www.comss.ru/page.php?id=19581)
-- [Koi.ai — Malicious Chrome Extensions Campaign](https://koi.ai/blog/2025/06/28/malicious-chrome-extensions/)
+- [Koi.ai — VK Styles: 500K Users Infected](https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts)
 
 ### What the original extension did
 
