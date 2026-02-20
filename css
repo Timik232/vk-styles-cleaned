@@ -1685,9 +1685,9 @@ html.Pl.mm #side_bar_inner{margin:calc(var(--header-height) + 7px) 0 0 -16px!imp
 html.Pl.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -1px!important}
 html.Pl.ns #side_bar_inner{margin:var(--header-height) 0 0 -16px!important;border-radius:0 0 20px 0!important}
 html.Pl.ns.mb #side_bar_inner:after{left:0;right:unset;background:var(--nsRightCorner)}
-html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin:-6px!important;padding:6px!important;box-sizing:border-box}
+html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin-left:-6px!important;margin-bottom:-4px!important;padding-left:6px!important;padding-bottom:4px!important}
 
-html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4px!important;margin-left:auto}
+html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4px!important;margin-left:auto!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li{width:36px!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li>a{width:36px!important;padding:6px!important;justify-content:center;overflow:visible!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__label],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__settings],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=separator],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=counter],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=Counter]{display:none!important}
