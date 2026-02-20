@@ -7,9 +7,11 @@ Thumbs.db
 Desktop.ini
 .DS_Store
 
-# GitHub Copilot instructions & agent files
+# GitHub Copilot instructions
 .github/copilot-instructions.md
-.github/agents/
+
+# Feature inventory (AI reference, not part of extension)
+FEATURE_INVENTORY.md
 
 # VK reference HTML
 *.html
