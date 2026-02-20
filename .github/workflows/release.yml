@@ -7,10 +7,6 @@ on:
         description: 'Version tag (e.g. v2.0.2)'
         required: true
         type: string
-      release_notes:
-        description: 'Release notes (Markdown supported, use \n for new lines)'
-        required: true
-        type: string
 
 permissions:
   contents: write
@@ -71,13 +67,19 @@ jobs:
           echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.rar"
           ls -lh build/
 
-      - name: Format release notes
+      - name: Extract changelog for version
         id: notes
         run: |
-          # Convert literal \n to actual newlines for Markdown rendering
-          NOTES=$(echo "${{ inputs.release_notes }}" | sed 's/\\n/\n/g')
-          echo "formatted<<EOF" >> $GITHUB_OUTPUT
-          echo -e "$NOTES" >> $GITHUB_OUTPUT
+          VERSION="${{ inputs.version }}"
+          VERSION="${VERSION#v}"
+          # Extract section between ## [VERSION] and next ## [
+          NOTES=$(awk "/^## \\[${VERSION}\\]/{found=1; next} /^## \\[/{if(found) exit} found{print}" CHANGELOG.md)
+          if [ -z "$NOTES" ]; then
+            echo "::warning::No changelog entry found for version $VERSION in CHANGELOG.md"
+            NOTES="No changelog entry found. Please update CHANGELOG.md."
+          fi
+          echo "body<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
@@ -88,7 +90,7 @@ jobs:
           body: |
             ## ${{ inputs.version }}
 
-            ${{ steps.notes.outputs.formatted }}
+            ${{ steps.notes.outputs.body }}
 
             ---
 
