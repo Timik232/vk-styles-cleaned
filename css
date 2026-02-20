@@ -1685,7 +1685,7 @@ html.Pl.mm #side_bar_inner{margin:calc(var(--header-height) + 7px) 0 0 -16px!imp
 html.Pl.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -1px!important}
 html.Pl.ns #side_bar_inner{margin:var(--header-height) 0 0 -16px!important;border-radius:0 0 20px 0!important}
 html.Pl.ns.mb #side_bar_inner:after{left:0;right:unset;background:var(--nsRightCorner)}
-html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;padding:6px 0.5em 6px 8px!important;box-sizing:border-box;width:100%}
+html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin:-6px!important;padding:6px!important;box-sizing:border-box}
 
 html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4px!important;margin-left:auto}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li{width:36px!important}
