@@ -1231,7 +1231,7 @@ bg:(e,u,x)=>{		//log('st.bg('+e+','+u+','+x+')');
 		}
 	}
 	if(u){
-		if(u=='err')return st_.u=0,st.bg(0,st_.i.replace('&thumb','&src='+st.bg.s.shift()+'&thumb'));
+		if(u=='err'){if(st.bg.s&&st.bg.s.length)return st_.u=0,st.bg(0,st_.i.replace('&thumb','&src='+st.bg.s.shift()+'&thumb'));return}
 		let t=u, s=0, a=ia?ia.split(', '):[], al=a.length;u=u.replace(/&src=[^&]*/,'');
 		if(u=='prev')return st.bg(2,a[is?0:rnd(Math.floor(al/3))]);
 		if(u=='next'){a.unshift(a.pop());st_.ia=a.join(', ');return st.bg(2,a[is?al-1:rnd(al-1,Math.ceil(al/(al<6?2:1.5)))])}
@@ -1288,7 +1288,7 @@ bg:(e,u,x)=>{		//log('st.bg('+e+','+u+','+x+')');
 			}else if(/\.mp4$|\.webm$|\.m3u8$/.test(u)){
 				st_.iv=4;f.innerHTML=c+`<video src="${Dc(u)}" onerror="this.crossOrigin=this.onerror='';this.load()" ${l(1)}></video>`;if(/\.m3u8/.test(u))hls(u)
 			}else if(/^V[\w-]+$/.test(u)){
-				st_.iv=4;doc(Dc(u),'',e=>f.innerHTML=c+`<video src="${e}" onerror="this.crossOrigin=this.onerror='';this.load()" ${l(1)}></video>`)
+				st_.iv=4;st.bg.r=0;doc(Dc(u),'',e=>f.innerHTML=c+`<video src="${e}" onerror="this.crossOrigin?(this.crossOrigin=this.onerror='',this.load()):st.bg.r++<2&&(st_.u='',st.bg(0,st_.i))" ${l(1)}></video>`)
 			}else{
 				st_.iv=0;f.textContent=''
 			}
@@ -2802,7 +2802,7 @@ w.addEventListener('dragenter',e=>{clearTimeout(T4);T4=setTimeout(()=>e.target.c
 w.addEventListener('message',e=>{e=n(e.data.actionType).match(/Modal(Open|Close)$/);e&&body.classList[e[1]=='Open'?'add':'remove']('layers_shown')});
 w.addEventListener('storage',e=>e.key=='st_'&&sync(2));
 if(L.st_reload)delete L.st_reload,sync(2),sync(4);st.m(st_.mode);sync(3);
-document.addEventListener('visibilitychange',()=>st_.iv&&st.bgv());
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState=='visible'){let dt=Date.now()-(st.bg.h||0);if(st_.iv){let el=cpf.querySelector('video,iframe');if(!el||(el.tagName=='VIDEO'&&(el.error||!el.readyState&&el.networkState>1))){let u=st_.i;if(/vk\.com\/video/.test(u))u=u.replace(/&src=[^&]*/,'').replace(/&thumb=.*/,'');st_.u='';st.bg(0,u)}else if(el.tagName=='IFRAME'&&dt>3e4){el.src=el.src;st.bgv()}else st.bgv()}else if(st_.i)hue()}else{st.bg.h=Date.now();st_.iv&&st.bgv()}});
 console.log=function(a,b){'common module enabled'==b&&(body?setTimeout(wl):wl.e=1);D&&cl.apply(this,arguments)};
 document.readyState=='complete'?(wl.e=1,dl()):(document.readyState=='interactive'?dl():document.addEventListener('DOMContentLoaded',dl),w.addEventListener('load',wl))
 })({})
