@@ -7,6 +7,11 @@ on:
         description: 'Version tag (e.g. v2.0.2)'
         required: true
         type: string
+      prerelease:
+        description: 'Mark as pre-release (not latest)'
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -107,4 +112,5 @@ jobs:
             build/vk-styles-clean-${{ inputs.version }}.zip
             build/vk-styles-clean-${{ inputs.version }}.rar
           draft: false
-          prerelease: false
+          prerelease: ${{ inputs.prerelease }}
+          make_latest: ${{ inputs.prerelease == false }}
