@@ -15,7 +15,7 @@
 Оригинальное расширение VK Styles (500 000+ установок) было обнаружено как вредоносное в ходе исследования компании **Koi Security** и описано в статьях:
 
 - [Comss.ru — «Кампания вредоносных расширений для Chrome с 500 000+ установок»](https://www.comss.ru/page.php?id=19581)
-- [Koi.ai — Malicious Chrome Extensions Campaign](https://koi.ai/blog/2025/06/28/malicious-chrome-extensions/)
+- [Koi.ai — VK Styles: 500K Users Infected](https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts)
 
 ### Что делало оригинальное расширение
 
@@ -57,8 +57,10 @@
 ### Установка
 
 1. Скачайте или клонируйте этот репозиторий
-2. Откройте `chrome://extensions/` в браузере
-3. Включите **Режим разработчика** (переключатель в правом верхнем углу)
+2. Откройте страницу расширений в браузере:
+   - **Chrome / Edge**: `chrome://extensions/`
+   - **Яндекс Браузер**: `browser://extensions/`
+3. Включите **Режим разработчика** (переключатель в правом верхнем углу страницы)
 4. Нажмите **Загрузить распакованное расширение**
 5. Выберите папку с файлами расширения
 6. Откройте [vk.com](https://vk.com) — расширение активируется автоматически
@@ -157,7 +159,7 @@ CI должен пройти без ошибок — это обязательн
 The original VK Styles extension (500,000+ installs) was discovered to be malicious by **Koi Security** researchers:
 
 - [Comss.ru — "Malicious Chrome Extension Campaign with 500K+ Installs"](https://www.comss.ru/page.php?id=19581)
-- [Koi.ai — Malicious Chrome Extensions Campaign](https://koi.ai/blog/2025/06/28/malicious-chrome-extensions/)
+- [Koi.ai — VK Styles: 500K Users Infected](https://www.koi.ai/blog/vk-styles-500k-users-infected-by-chrome-extensions-that-hijack-vkontakte-accounts)
 
 ### What the original extension did
 
@@ -199,8 +201,10 @@ Additionally:
 ### Installation
 
 1. Download or clone this repository
-2. Open `chrome://extensions/` in your browser
-3. Enable **Developer mode** (toggle in the top-right corner)
+2. Open the extensions page in your browser:
+   - **Chrome / Edge**: `chrome://extensions/`
+   - **Yandex Browser**: `browser://extensions/`
+3. Enable **Developer mode** (toggle in the top-right corner of the page)
 4. Click **Load unpacked**
 5. Select the folder containing the extension files
 6. Open [vk.com](https://vk.com) — the extension activates automatically

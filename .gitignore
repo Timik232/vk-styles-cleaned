@@ -9,3 +9,10 @@ Desktop.ini
 
 # GitHub Copilot instructions
 .github/copilot-instructions.md
+
+# Feature inventory (AI reference, not part of extension)
+FEATURE_INVENTORY.md
+
+# VK reference HTML
+*.html
+Бесѣдка_files/

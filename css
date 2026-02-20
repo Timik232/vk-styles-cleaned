@@ -1658,6 +1658,7 @@ html.rm .nim-dialog.nim-dialog_selected{box-shadow:inset 3px 0 0 0 var(--g3)}
 .pv_photo_wrap{width:max-content}
 
 html.mf #side_bar{position:sticky;top:0!important}
+html.mf #layout_sidebar{position:sticky;top:var(--spa-layout-header-height,48px);align-self:flex-start}
 #side_bar_inner{height:fit-content!important;margin:calc(var(--header-height) + 7px) 0 0 -15px!important;padding:8px 5px 8px 6px!important}
 html.ns #side_bar_inner{margin:var(--header-height) 0 0 -10px!important}
 html.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -25px!important}
@@ -1684,7 +1685,12 @@ html.Pl.mm #side_bar_inner{margin:calc(var(--header-height) + 7px) 0 0 -16px!imp
 html.Pl.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -1px!important}
 html.Pl.ns #side_bar_inner{margin:var(--header-height) 0 0 -16px!important;border-radius:0 0 20px 0!important}
 html.Pl.ns.mb #side_bar_inner:after{left:0;right:unset;background:var(--nsRightCorner)}
-html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;padding:6px 0.5em 6px 8px!important;box-sizing:border-box;width:100%}
+html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin-left:-6px!important;margin-bottom:-4px!important;padding-left:6px!important;padding-bottom:4px!important}
+
+html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4px!important;margin-left:auto!important}
+html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li{width:36px!important}
+html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li>a{width:36px!important;padding:6px!important;justify-content:center;overflow:visible!important}
+html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__label],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__settings],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=separator],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=counter],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=Counter]{display:none!important}
 
 html.mm #side_bar ol li>:first-child{width:20px!important;box-sizing:content-box!important}
 .left_menu_nav_wrap .ui_actions_menu_wrap .ui_actions_menu{top:initial;bottom:31px}

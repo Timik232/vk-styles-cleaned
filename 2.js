@@ -598,6 +598,9 @@ mm:e=>{				//log('st.mm('+e+')');
 	let t=st_.mm=e?st_.mm<1?++st_.mm:0:st_.mm||0;
 	b.classList[t?'add':'remove']('mm');
 	cp_mm.classList[t?'add':'remove']('a');
+	forEach('#layout_sidebar [class*=LeftMenu]>nav ol>li>a,#side_bar ol li>:first-child',el=>{
+		if(t){let txt=el.textContent.trim();if(txt)el.title=txt}else el.removeAttribute('title')
+	});
 	sync(e,'mm')
 },
 mf:e=>{				//log('st.mb('+e+')');
@@ -1445,14 +1448,14 @@ imu:e=>{				//log('st.imu('+e+')');
 	if(cp_imuc)cp_imuc.value=col.slice(0,7);
 	if(t){
 		let check=()=>{
-			document.querySelectorAll('div.ConvoListItemWrapper:not([data-imu])').forEach(wrapper=>{
-				wrapper.dataset.imu='1';
+			document.querySelectorAll('div.ConvoListItemWrapper').forEach(wrapper=>{
 				let btn=wrapper.querySelector('button.ConvoListItem');
 				if(!btn)return;
 				let svg=btn.querySelector('svg.vkuiIcon--check_outline_16');
 				let unread=btn.querySelector('div.UnreadCounter');
 				if(svg||unread)wrapper.style.backgroundColor=col;
 				else wrapper.style.backgroundColor='';
+				wrapper.dataset.imu='1';
 			});
 		};
 		if(!st.imu.mo){
