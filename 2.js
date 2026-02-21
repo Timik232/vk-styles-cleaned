@@ -2475,7 +2475,7 @@ wl=()=>{				//log('load');
 		(e=>ap._impl.setVolume=function(t){arguments[0]=ac&&ac.c?(ac.g.gain.value=t,1):t;return e.apply(this,arguments)})(ap._impl.setVolume);
 		ap._impl.fadeVolume=(t,e,r)=>{t=Math.max(0,Math.min(1,t));let a=ap._impl,n=ac&&ac.c?ac.g.gain.value:a._currentAudioEl.volume,i=e?(t-n)/(e/20||1):t<n?-.06:.001,T=setInterval(()=>{!e&&i>0&&(i*=1.35),n+=i;if(i<0?n<=t:n>=t)clearInterval(T),a.setVolume(t),r&&r();else a.setVolume(n)}, 20)};
 		ap._updatePlaybackRate=r=>{r=w.AudioUtils?.isArticleTts(ap.getCurrentAudio())?JSON.parse(Lg('podcasts')||'{}').rate||1:st_.ar;ap._impl.setPlaybackRate(r>0?r:1)};
-		ap.set_volume=e=>{ap.setVolume(isNaN(e)?(Math.pow(35,Math.max(0,Math.min(1,Math.log(1+34*ap.getVolume())/Math.log(35)+(e.deltaY<0||e.keyCode==38?e.ctrlKey?.1:e.altKey?.01:.02:e.ctrlKey?-.1:e.altKey?-.01:-.02))))-1)/34:e);docTT(Math.round(Math.log(1+34*ap.getVolume())/Math.log(35)*100)+'%')};
+		ap.set_volume=e=>{let V=ac&&ac.c?ac.g.gain.value:ap.getVolume();ap.setVolume(isNaN(e)?(Math.pow(35,Math.max(0,Math.min(1,Math.log(1+34*V)/Math.log(35)+(e.deltaY<0||e.keyCode==38?e.ctrlKey?.1:e.altKey?.01:.02:e.ctrlKey?-.1:e.altKey?-.01:-.02))))-1)/34:e);docTT(Math.round(Math.log(1+34*(ac&&ac.c?ac.g.gain.value:ap.getVolume()))/Math.log(35)*100)+'%')};
 		if(st_.ap&&L.audio_playing=='true'&&ap_visibility&&(audio_progress>=Lg('progress')&&audio_track==Lg('track')||audio_progress==void 0)){let e=ap._impl._currentAudioEl?.audioElement;if(e)e.readyState>=2?ap.play():e.addEventListener('canplay',()=>ap.play(),{once:1})}
 		ap.subscribe('progress',()=>ap._userVolume!=Lg('vol')&&ap.setVolume(Lg('vol')||(isNaN(ap._userVolume)?.476:ap._userVolume)))
 	}
