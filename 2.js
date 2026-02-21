@@ -1758,7 +1758,8 @@ o=()=>{				//log('st.o()');
 				c.addEventListener('contextmenu',e=>{End(e);ap.set_volume(.14459058185587104);h()}),
 				c.addEventListener('keydown',v),
 				c.addEventListener('wheel',v,{passive:false});
-			e.closest('[class*="TopAudioPlayer"],[class*="audio_page_player"],.top_audio_player')?.addEventListener('wheel',e=>{if(!e.target.closest('.cp_eq,.cp_ep'))v(e)},{passive:false})
+			let bar=e.closest('[class*="TopAudioPlayer"],[class*="audio_page_player"],.top_audio_player')||ge('web_spa_top_audio_player')||ge('top_audio_player');
+			if(bar&&!bar._whl){bar._whl=1;bar.addEventListener('wheel',e=>{if(!e.target.closest('.cp_eq,.cp_ep'))v(e)},{passive:false})}
 		}),
 		M=()=>{
 			let a={'\/albums?':'photos'};
@@ -1780,6 +1781,7 @@ o=()=>{				//log('st.o()');
 		}
 		if(!st_.m)return body&&body.classList.remove('vk_tabbar_top'),Pr('.wall_item','.PostHeader__description,.ads_mark,.pia_item[href*="/ad_"]');
 		if(!o.A)A();
+		if(!o.K){let tp=w.web_spa_top_audio_player||w.top_audio_player;if(tp){o.K=1;['mouseenter','keydown','wheel'].forEach((e,i)=>tp.addEventListener(e,i?st.k:fe,{passive:false}))}}
 		if(!w.mv_bg&&(w.mvcur?.mvShown&&w.mv_main_info||w.react_rootVideo_page)){
 			let m=document.querySelector('#mv_main_info [class*="PostFooter__actions"],#react_rootVideo_page [class*="PostFooter__actions"],#mv_main_info .like_btns'), a=ce();
 			a.id='mv_bg';a.dataset.title=l.Set_bg;a.addEventListener('mouseenter',e=>st.tt(a));
