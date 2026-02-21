@@ -830,7 +830,7 @@ eq:()=>{				//log('EQ start');
 		ac.a=ac.createAnalyser();
 		ac.b=ac.createAnalyser();ac.b.smoothingTimeConstant=.4;
 		ac.f=createFilters();
-		ac.g=ac.createGain();ac.g.gain.value=+!st_.m;
+		ac.g=ac.createGain();ac.g.gain.value=1;
 		ac.l=ac.createDynamicsCompressor();
 		ac.ag=ac.createGain();st.e();st.es()
 	}
@@ -1741,7 +1741,7 @@ o=()=>{				//log('st.o()');
 			let a=gec('cp_eq',e)
 			,	b=gec('cp_ep',e)
 			,	c=e.parentElement.querySelector('[class*="__volumeSlider"],.audio_page_player_volume_wrap')
-			,	h=()=>forEach('body>div .vkuiTooltipBase__host .vkuiTooltipBase__content .vkuiSubhead__host',e=>e.childNodes.forEach(e=>e.data=Math.round(Math.log(1+34*(ac&&ac.c?ac.g.gain.value:ap.getVolume()))/Math.log(35)*100)+'%'))
+			,	h=()=>forEach('body>div .vkuiTooltipBase__host .vkuiTooltipBase__content .vkuiSubhead__host',e=>e.childNodes.forEach(e=>e.data=Math.round(Math.log(1+34*ap.getVolume())/Math.log(35)*100)+'%'))
 			,	v=e=>{if(e.deltaY||e.keyCode==38||e.keyCode==40)ap.set_volume(e),h(),End(e)};
 			if(a)a.remove(),a.addEventListener('input',e=>{st.es(1,ie(e.target)/2,e.target.value-12,e.target.k);e.target.k=0}),
 				a.addEventListener('contextmenu',End),
@@ -2473,12 +2473,12 @@ wl=()=>{				//log('load');
 		(e=>ap.stop=function(r){L.audio_playing=ap._isPlaying=!1;if(r=='CLEAR')ap._currentAudio=null;st.vo();return e.apply(this,arguments)})(ap.stop);
 		(e=>ap.playPrev=function(){if(Math.abs(st_.is)==8)st.bg(1,'prev');return e.apply(this,arguments)})(ap.playPrev);
 		(e=>ap.playNext=function(){if(Math.abs(st_.is)==8)st.bg(1,'next');return e.apply(this,arguments)})(ap.playNext);
-		(e=>ap._impl.setVolume=function(t){arguments[0]=ac&&ac.c?(ac.g.gain.value=t,1):t;return e.apply(this,arguments)})(ap._impl.setVolume);
-		ap._impl.fadeVolume=(t,e,r)=>{t=Math.max(0,Math.min(1,t));let a=ap._impl,n=ac&&ac.c?ac.g.gain.value:a._currentAudioEl.volume,i=e?(t-n)/(e/20||1):t<n?-.06:.001,T=setInterval(()=>{!e&&i>0&&(i*=1.35),n+=i;if(i<0?n<=t:n>=t)clearInterval(T),a.setVolume(t),r&&r();else a.setVolume(n)}, 20)};
+		(e=>ap._impl.setVolume=function(t){return e.apply(this,arguments)})(ap._impl.setVolume);
+		ap._impl.fadeVolume=(t,e,r)=>{t=Math.max(0,Math.min(1,t));let a=ap._impl,n=a._currentAudioEl.volume,i=e?(t-n)/(e/20||1):t<n?-.06:.001,T=setInterval(()=>{!e&&i>0&&(i*=1.35),n+=i;if(i<0?n<=t:n>=t)clearInterval(T),a.setVolume(t),r&&r();else a.setVolume(n)}, 20)};
 		ap._updatePlaybackRate=r=>{r=w.AudioUtils?.isArticleTts(ap.getCurrentAudio())?JSON.parse(Lg('podcasts')||'{}').rate||1:st_.ar;ap._impl.setPlaybackRate(r>0?r:1)};
-		ap.set_volume=e=>{let V=ac&&ac.c?ac.g.gain.value:ap.getVolume();ap.setVolume(isNaN(e)?(Math.pow(35,Math.max(0,Math.min(1,Math.log(1+34*V)/Math.log(35)+(e.deltaY<0||e.keyCode==38?e.ctrlKey?.1:e.altKey?.01:.02:e.ctrlKey?-.1:e.altKey?-.01:-.02))))-1)/34:e);docTT(Math.round(Math.log(1+34*(ac&&ac.c?ac.g.gain.value:ap.getVolume()))/Math.log(35)*100)+'%')};
+		ap.set_volume=e=>{ap.setVolume(isNaN(e)?(Math.pow(35,Math.max(0,Math.min(1,Math.log(1+34*ap.getVolume())/Math.log(35)+(e.deltaY<0||e.keyCode==38?e.ctrlKey?.1:e.altKey?.01:.02:e.ctrlKey?-.1:e.altKey?-.01:-.02))))-1)/34:e);docTT(Math.round(Math.log(1+34*ap.getVolume())/Math.log(35)*100)+'%')};
 		if(st_.ap&&L.audio_playing=='true'&&ap_visibility&&(audio_progress>=Lg('progress')&&audio_track==Lg('track')||audio_progress==void 0)){let e=ap._impl._currentAudioEl?.audioElement;if(e)e.readyState>=2?ap.play():e.addEventListener('canplay',()=>ap.play(),{once:1})}
-		ap.subscribe('progress',()=>!(ac&&ac.c)&&ap._userVolume!=Lg('vol')&&ap.setVolume(Lg('vol')||(isNaN(ap._userVolume)?.476:ap._userVolume)))
+		ap.subscribe('progress',()=>ap._userVolume!=Lg('vol')&&ap.setVolume(Lg('vol')||(isNaN(ap._userVolume)?.476:ap._userVolume)))
 	}
 	let c=e=>w[e]&&!w[e].Z&&(w[e].Z=1), d=()=>{
 		c('nav')&&
