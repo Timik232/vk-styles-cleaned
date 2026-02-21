@@ -2450,7 +2450,7 @@ dl=()=>{				D&&log('DOMContentLoaded');
 	h.replaceChild=(e,n)=>{e.rel=='shortcut icon'?fav(e.href):f(e,n)};w.setFavIcon=fav;fav();forEach('link[rel*="icon"]',e=>e!=w.icoNode&&e.remove());
 	if(gec('VKVideoLogo'))gec('VKVideoLogo').removeAttribute('accesskey');
 	if(w.top_audio_player||w.web_spa_top_audio_player)['mouseenter','keydown','wheel'].forEach((e,i)=>(w.top_audio_player||w.web_spa_top_audio_player).addEventListener(e,i?st.k:fe,{passive:false}));
-	b.addEventListener('wheel',e=>{if(w.ap&&e.deltaY&&e.target.closest('#web_spa_top_audio_player,#top_audio_player,.top_audio_player,[class*="TopAudioPlayer"],[class*="audio_page_player"],.audio_page_layout')&&!e.target.closest('.cp_eq,.cp_ep,[type="range"]')){ap.set_volume(e);End(e)}},{passive:false});
+	b.addEventListener('wheel',e=>{if(w.ap&&e.deltaY&&e.target.closest('#web_spa_top_audio_player,#top_audio_player,.top_audio_player,[class*="TopAudioPlayer"],[class*="audio_page_player__"]')&&!e.target.closest('.cp_eq,.cp_ep,[type="range"]')){ap.set_volume(e);End(e)}},{passive:false});
 	if((w.top_audio_btn_group||w.web_spa_top_audio_player)&&!w.top_audio_play){let a=ce();a.id='top_audio_play';a.addEventListener('click',e=>ap.playPlaylist(vk.id,-1,0,0,e.shiftKey));(w.top_audio_btn_group||w.web_spa_top_audio_player).after(a)};
 	if(wl.e)wl()
 },
