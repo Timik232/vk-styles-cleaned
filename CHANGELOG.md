@@ -5,7 +5,16 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [2.0.3] - 2025-07-16
+## [2.0.4] - 2026-02-21
+
+### Fixed
+- Исправлено изменение размера эмодзи — обновлены CSS-селекторы для нового DOM VK (`.Emoji`)
+
+### Security
+- Сужен `web_accessible_resources` с `["*"]` до минимально необходимых файлов (`2.js`, `css`, `mcss`, `i/*`)
+- Удалён мёртвый код `plus()`/`less()` — остатки малварного механизма промо/пейволла оригинального расширения
+
+## [2.0.3] - 2026-02-20
 
 ### Fixed
 - Фон (изображение и видео) больше не пропадает при переключении вкладок и простое

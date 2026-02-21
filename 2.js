@@ -288,10 +288,6 @@ fav=e=>{				//log('fav('+e+')');
 	if(!o)o=ce('link'),o.rel='shortcut icon';document.head&&document.head.append(o);m&&(o.i='fav_'+m[2]);w.icoNode=o;
 	o.href=`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38"><rect fill="${st_.mode?favColor[0]:'%232787F5'}" width="38" height="38" rx="${n(st_.fc,1)?10:19}"/><path fill="${st_.mode?favColor[1]:'white'}" d="${p[m?m[2]:'logo']}"/></svg>`
 },
-plus=e=>{
-	if(e==1)return false;
-},
-less=e=>{},
 copy=e=>{
 	navigator.clipboard.writeText(e)
 },
@@ -480,7 +476,7 @@ s:()=>{
 		cp_fi.addEventListener('paste',e=>st.fn(1,g(e)));
 		cp_cb.addEventListener('paste',e=>st.fn(2,g(e)));
 		cp_bi.addEventListener('paste',e=>st.bg(1,g(e)));
-		cp.addEventListener('dragenter',e=>{let f=(el,h)=>{let a=el.getBoundingClientRect(),b=el.nextElementSibling.getBoundingClientRect(),x1=a.x+a.width-e.x,y1=a.y+a.height+b.height-e.y;if(!plus(1)&&x1>=0&&x1<=a.width&&y1>=0&&y1<=a.height+b.height)el.classList.add('o'),!el.classList.contains('a')&&h();else if(el.classList.contains('o'))el.classList.remove('o'),h(-1)};f(cp_b,st.b);f(cp_f,st.f)});
+		cp.addEventListener('dragenter',e=>{let f=(el,h)=>{let a=el.getBoundingClientRect(),b=el.nextElementSibling.getBoundingClientRect(),x1=a.x+a.width-e.x,y1=a.y+a.height+b.height-e.y;if(x1>=0&&x1<=a.width&&y1>=0&&y1<=a.height+b.height)el.classList.add('o'),!el.classList.contains('a')&&h();else if(el.classList.contains('o'))el.classList.remove('o'),h(-1)};f(cp_b,st.b);f(cp_f,st.f)});
 		cp.addEventListener('drop',e=>{let a=e.target,b=e.dataTransfer.getData('text');a.closest('#cp_gs')&&st.ss(b);a.closest('#cp_b,#cp_bi')&&st.bg(1,b);a.closest('#cp_f,#cp_fi')&&st.fn(1,b);forEach('.cp_t.o',e=>e.classList.remove('o'),cp);End(e)});
 		forEach('[data-tt]',e=>{e.setAttribute('onmouseenter',e.dataset.tt);e.removeAttribute('data-tt')},cp)
 	}
@@ -653,7 +649,6 @@ f:e=>{
 		cp_f.classList.remove('a');
 		st.fn(1,'')
 	}else{
-		if(plus(1))return plus();
 		cp_f.classList.add('a');
 		document.querySelectorAll('#cp_f+.w .cp_ht')[1].classList[st_.fa==''?'add':'remove']('hidden');
 		st.fn(1,n(st_.fa).split(', ').splice(-1)[0])
@@ -718,7 +713,6 @@ fs:(e,k)=>{			//log('st.fs('+e+')');
 	if(e)hue(),sync(1,'fs')
 },
 v:e=>{
-	if(!e&&plus(1))return plus();
 	let t=Math.abs(st_.vp)||4;
 	st.vp(e||cp_v.classList.contains('a')?(st.t(),-t):t)
 },
@@ -1152,7 +1146,6 @@ b:e=>{
 		cp_b.classList.remove('a');
 		st.bg(1,'')
 	}else{
-		if(plus(1))return plus();
 		cp_b.classList.add('a');
 		cp_bn.parentElement.classList[!st_.ia?'add':'remove']('hidden');
 		st.bg(1,n(st_.ia).split(', ').splice(-1)[0])
@@ -1169,7 +1162,6 @@ bo:e=>{				//log('st.bo('+e+')');
 },
 bg:(e,u,x)=>{		//log('st.bg('+e+','+u+','+x+')');
 	if(u==void 0)return;
-	if(plus(1)&&u&&e)return plus();
 	let ia=n(st_.ia), is=n(st_.is,1), f=cpf, err=e=>{inpEr(cp_bi),w.topError&&topError(e||l.DocError,{dt:5})}, doc=(d,i,s)=>r(0,d+i,'api=1',h=>{let t=h.getResponseHeader('Content-Type'),f=t=>s?s(/docUrl|userapi/.test(t)?t[0].split('"').pop().replace(/\\/g,''):d):st.bg(e,(/mp4$|webm$/.test(t)?'V':'I')+i);h.abort();/^text/.test(t)?r(0,d+i,'',h=>/docUrl|userapi/.test(h)?(d!='/doc'&&/docOwnerId[\\": ]+-?\d+/.test(h)&&/docId[\\": ]+\d+/.test(h)&&(d='/doc',i=h.match(/docOwnerId[\\": ]+(-?\d+)/)[1]+'_'+h.match(/docId[\\": ]+(\d+)/)[1]),f(h.match(/(docUrl[\\": ]+|href="[^"]+userapi)[^?"]+/g))):err()):f(t)},2,()=>err());
 	u=u.replace(/['"<>\{\}\(\);]/g,'').replace(/\s+/g,' ').replace(/, /g,',').trim().replace(/&amp;/g,'&'); st.bg.T=+new Date;
 	if(!x&&u.length>4&&st_.u!=u){
@@ -1572,7 +1564,6 @@ gs:e=>{
 	]),1)).replace(/=+$/,''))
 },
 ss:(e,k)=>{
-	if(e&&plus(1))return plus();
 	if(e&&~e.indexOf('#'))e=e.match(/#([\w\d\/\+]*)/)[1];
 	let a=e?JSON.parse(Jc(atou(e))):[st_.s[0]],b=n(st_.hsl).split('|');D&&log(a);
 	n(a[0]).split('|').forEach((e,i)=>e&&(b[i]=e));
@@ -1711,7 +1702,7 @@ h=(e,k)=>{			//log('h('+e+','+k+')');
 	let s=sessionStorage, h=JSON.parse(s.st_h||'[]'), ch=JSON.parse(s.st_ch||'{}'), c=s.st_hс=+s.st_hс||0;
 	if(e||!s.st_ch){
 		let n=JSON.parse(L.st_||'{}'), p={};
-		if(!e){let a=Object.assign({},st_);['m','t','z','r','v','u','s','n','l','G','C','S','Y','A','U','mode','lang','url','sync','plus'].forEach(e=>delete a[e]);s.st_h='[{}]';s.st_ch=JSON.stringify(a);return}
+		if(!e){let a=Object.assign({},st_);['m','t','z','r','v','u','s','n','l','G','C','S','Y','A','U','mode','lang','url','sync'].forEach(e=>delete a[e]);s.st_h='[{}]';s.st_ch=JSON.stringify(a);return}
 		for(let i in n)p[i]=ch[i];if(JSON.stringify(p)==L.st_)return;
 		h=h.slice(0,c+1);Object.assign(h[h.length-1],p);h.push(n);
 		c=s.st_hс=h.length-1;s.st_h=JSON.stringify(h);s.st_ch=JSON.stringify(Object.assign(ch,n))
@@ -2074,9 +2065,6 @@ l=lang()?{
 	abm4:'Друзья',
 	abim:'Скрытые беседы',
 	abimInfo:'Функция активна пока расширение включено, даже если тема отключена !!!<br><br>Показать / Скрыть: <b>Alt</b> + <b>I</b>',
-	plus:'',
-	plusInfo:'',
-	plusMore:'',
 	u:'Нажмите на версию чтобы проверить наличие горячих обновлений',
 	e:'ошибка',
 	h:'Скрыть',
@@ -2284,9 +2272,6 @@ l=lang()?{
 	abm4:'Friends',
 	abim:'Hidden conversations',
 	abimInfo:'The function is active while the extension is enabled, even if the theme is disabled !!!<br><br>Show / Hide: <b>Alt</b> + <b>I</b>',
-	plus:'',
-	plusInfo:'',
-	plusMore:'',
 	u:'Click on version to check for hot updates',
 	e:'error',
 	h:'Hide',

@@ -1085,8 +1085,9 @@ label[class*=DragAndDropInput__rootHovered] .vkuiPlaceholder__icon,.line_div_val
 :root .emoji_cats_title_helper{padding:0}
 :root .emoji_cats_title_helper .emoji_cat_title{padding:10px 8px 6px}
 :root .emoji{vertical-align:calc(6px + -9px * var(--emoji_size));width:calc(16px * var(--emoji_size));height:calc(16px * var(--emoji_size))}
-:root :is(._im_page_peer_name,.im-mess-stack--lnk,.ui_rmenu_subitem,._im_dialog_link,.im-mess .im-mess--post .post_author) .emoji{width:14px;height:14px;vertical-align:-3px}
-:root .emoji_smile_cont .emoji{vertical-align:-3px;width:16px;height:16px}
+:root img.Emoji{zoom:var(--emoji_size)}
+:root :is(._im_page_peer_name,.im-mess-stack--lnk,.ui_rmenu_subitem,._im_dialog_link,.im-mess .im-mess--post .post_author) :is(.emoji,.Emoji){width:14px;height:14px;vertical-align:-3px;zoom:1}
+:root .emoji_smile_cont :is(.emoji,.Emoji){vertical-align:-3px;width:16px;height:16px;zoom:1}
 :root .emoji_smiles_row{display:inline}
 :root .emoji_tabs_wrap{width:calc(var(--emoji_tt_size) * 290px - 72px)}
 :root .emoji_tabs_r_s{right:34px}
