@@ -1,5 +1,5 @@
 {
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"name": "__MSG_name__",
 	"short_name": "VK Styles Clean",
 	"description": "__MSG_description__",
@@ -31,5 +31,5 @@
 		"128": "i/128.png"
 	},
 	"manifest_version": 3,
-	"web_accessible_resources": [ { "resources": ["*"], "matches": [ "https://vk.com/*", "https://*.vk.com/*" ] }]
+	"web_accessible_resources": [ { "resources": ["2.js", "css", "mcss", "i/*"], "matches": [ "https://vk.com/*", "https://*.vk.com/*" ] }]
 }

@@ -5,6 +5,12 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.4] - 2025-07-17
+
+### Security
+- Сужен `web_accessible_resources` с `["*"]` до минимально необходимых файлов (`2.js`, `css`, `mcss`, `i/*`)
+- Удалён мёртвый код `plus()`/`less()` — остатки малварного механизма промо/пейволла оригинального расширения
+
 ## [2.0.3] - 2025-07-16
 
 ### Fixed
