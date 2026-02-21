@@ -59,7 +59,7 @@ jobs:
       - name: Build extension RAR
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq rar
-          rar a "build/vk-styles-clean-${{ inputs.version }}.rar" \
+          rar a -r "build/vk-styles-clean-${{ inputs.version }}.rar" \
             manifest.json \
             0.js \
             1.js \
