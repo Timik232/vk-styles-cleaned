@@ -5,6 +5,13 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.1] - 2026-02-21
+
+### Fixed
+- Колёсико мыши теперь регулирует громкость на всей панели музыки без визуализатора (делегированный слушатель на body)
+- Надёжное прикрепление слушателей к топ-плееру через fallback getElementById и MutationObserver
+- Добавлен флаг `-r` в RAR-сборку релиза для включения `_locales/` с подпапками
+
 ## [2.0.5] - 2026-02-21
 
 ### Fixed
