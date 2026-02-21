@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.2] - 2026-02-22
+
+### Fixed
+- Колёсико мыши больше не меняет громкость на всей странице музыки — только на панели плеера
+
 ## [2.0.5.1] - 2026-02-21
 
 ### Fixed
