@@ -6,7 +6,7 @@
 
 ## Русский
 
-**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Установка](#установка) · [Использование](#использование) · [📖 Документация](https://github.com/Timik232/vk-styles-cleaned/wiki) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
+**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Новые функции](#новые-функции) · [Установка](#установка) · [Использование](#использование) · [📖 Документация](https://github.com/Timik232/vk-styles-cleaned/wiki) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
 
 ### Описание
 
@@ -53,6 +53,14 @@
 - Функции отображения реакций (`st.imr`), подсветки непрочитанных сообщений (`st.imu`) и позиционирования действий (`st.ima`) включены по умолчанию
 - Исправлено CSS-правило, блокировавшее отображение контейнера реакций
 - Галерея тем (видео-обои) сохранена и работает
+
+### Новые функции
+
+По сравнению с оригинальным расширением добавлены:
+
+- **Изменение цвета непрочитанных сообщений** — настройка цвета для выделения непрочитанных диалогов
+- **Опускание кнопки «Ответить»** — кнопка ответа на сообщение перемещена в более удобную позицию
+- **Ускорение появления эмодзи** — эмодзи загружаются быстрее при вводе
 
 ### Установка
 
@@ -152,7 +160,7 @@ CI должен пройти без ошибок — это обязательн
 
 ## English
 
-**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [Installation](#installation) · [Usage](#usage) · [📖 Documentation](https://github.com/Timik232/vk-styles-cleaned/wiki) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
+**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [New features](#new-features) · [Installation](#installation) · [Usage](#usage) · [📖 Documentation](https://github.com/Timik232/vk-styles-cleaned/wiki) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
 
 ### Description
 
@@ -199,6 +207,14 @@ Additionally:
 - Reaction display (`st.imr`), unread message highlighting (`st.imu`), and action positioning (`st.ima`) are enabled by default
 - Fixed a CSS rule that blocked the reaction picker container from appearing
 - Theme gallery (video wallpapers) is preserved and functional
+
+### New features
+
+Compared to the original extension, the following features were added:
+
+- **Unread message color customization** — configure the color used to highlight unread dialogs
+- **Lowered "Reply" button** — the reply-to-message button is moved to a more convenient position
+- **Faster emoji appearance** — emojis load faster when typing
 
 ### Installation
 
