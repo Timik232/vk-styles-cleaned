@@ -5,10 +5,16 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [2.0.4.1] - 2026-02-21
+## [2.0.5] - 2026-02-21
 
 ### Fixed
 - Исправлена регулировка громкости колёсиком мыши при активном эквалайзере/визуализаторе
+<<<<<<< HEAD
+- Громкость больше не застревает на одном значении при активном эквалайзере (progress-хендлер не сбрасывает GainNode)
+- Колёсико мыши теперь регулирует громкость при наведении на всю панель музыки сверху, а не только на ползунок
+- Tooltip громкости показывает реальное значение при активном эквалайзере
+=======
+>>>>>>> origin/develop
 
 ## [2.0.4] - 2026-02-21
 

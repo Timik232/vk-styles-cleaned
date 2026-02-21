@@ -1741,7 +1741,7 @@ o=()=>{				//log('st.o()');
 			let a=gec('cp_eq',e)
 			,	b=gec('cp_ep',e)
 			,	c=e.parentElement.querySelector('[class*="__volumeSlider"],.audio_page_player_volume_wrap')
-			,	h=()=>forEach('body>div .vkuiTooltipBase__host .vkuiTooltipBase__content .vkuiSubhead__host',e=>e.childNodes.forEach(e=>e.data=Math.round(Math.log(1+34*ap.getVolume())/Math.log(35)*100)+'%'))
+			,	h=()=>forEach('body>div .vkuiTooltipBase__host .vkuiTooltipBase__content .vkuiSubhead__host',e=>e.childNodes.forEach(e=>e.data=Math.round(Math.log(1+34*(ac&&ac.c?ac.g.gain.value:ap.getVolume()))/Math.log(35)*100)+'%'))
 			,	v=e=>{if(e.deltaY||e.keyCode==38||e.keyCode==40)ap.set_volume(e),h(),End(e)};
 			if(a)a.remove(),a.addEventListener('input',e=>{st.es(1,ie(e.target)/2,e.target.value-12,e.target.k);e.target.k=0}),
 				a.addEventListener('contextmenu',End),
@@ -1757,7 +1757,8 @@ o=()=>{				//log('st.o()');
 			if(c)c.addEventListener('mouseenter',fe),
 				c.addEventListener('contextmenu',e=>{End(e);ap.set_volume(.14459058185587104);h()}),
 				c.addEventListener('keydown',v),
-				c.addEventListener('wheel',v,{passive:false})
+				c.addEventListener('wheel',v,{passive:false});
+			e.closest('[class*="TopAudioPlayer"],[class*="audio_page_player"],.top_audio_player')?.addEventListener('wheel',e=>{if(!e.target.closest('.cp_eq,.cp_ep'))v(e)},{passive:false})
 		}),
 		M=()=>{
 			let a={'\/albums?':'photos'};
@@ -2477,7 +2478,7 @@ wl=()=>{				//log('load');
 		ap._updatePlaybackRate=r=>{r=w.AudioUtils?.isArticleTts(ap.getCurrentAudio())?JSON.parse(Lg('podcasts')||'{}').rate||1:st_.ar;ap._impl.setPlaybackRate(r>0?r:1)};
 		ap.set_volume=e=>{let V=ac&&ac.c?ac.g.gain.value:ap.getVolume();ap.setVolume(isNaN(e)?(Math.pow(35,Math.max(0,Math.min(1,Math.log(1+34*V)/Math.log(35)+(e.deltaY<0||e.keyCode==38?e.ctrlKey?.1:e.altKey?.01:.02:e.ctrlKey?-.1:e.altKey?-.01:-.02))))-1)/34:e);docTT(Math.round(Math.log(1+34*(ac&&ac.c?ac.g.gain.value:ap.getVolume()))/Math.log(35)*100)+'%')};
 		if(st_.ap&&L.audio_playing=='true'&&ap_visibility&&(audio_progress>=Lg('progress')&&audio_track==Lg('track')||audio_progress==void 0)){let e=ap._impl._currentAudioEl?.audioElement;if(e)e.readyState>=2?ap.play():e.addEventListener('canplay',()=>ap.play(),{once:1})}
-		ap.subscribe('progress',()=>ap._userVolume!=Lg('vol')&&ap.setVolume(Lg('vol')||(isNaN(ap._userVolume)?.476:ap._userVolume)))
+		ap.subscribe('progress',()=>!(ac&&ac.c)&&ap._userVolume!=Lg('vol')&&ap.setVolume(Lg('vol')||(isNaN(ap._userVolume)?.476:ap._userVolume)))
 	}
 	let c=e=>w[e]&&!w[e].Z&&(w[e].Z=1), d=()=>{
 		c('nav')&&
