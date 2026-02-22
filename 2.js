@@ -2665,7 +2665,7 @@ w.addEventListener('keydown',e=>{	//log('keydown => ',e);
 	if(e.altKey&&e.keyCode==82)st.ar(1);
 	if(e.altKey&&e.keyCode==69)st.e(1),End(e);
 	if(e.altKey&&e.keyCode==70)st.f(),End(e);
-	if(e.altKey&&e.keyCode==66)st.b();
+	if(e.altKey&&e.keyCode==66){st.b();End(e)}
 	if(e.altKey&&e.keyCode==67)c(1,0);
 	if(st_.bo)return st.k(e);
 	if(cpo.isConnected&&(document.activeElement==cpo||document.activeElement==body))st.k(e);
