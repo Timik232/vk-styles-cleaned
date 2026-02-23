@@ -6,7 +6,7 @@
 
 ## Русский
 
-**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Новые функции](#новые-функции) · [Установка](#установка) · [Использование](#использование) · [📖 Документация](https://github.com/Timik232/vk-styles-cleaned/wiki) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [О проекте](#о-проекте)
+**Содержание:** [Описание](#описание) · [Что делало оригинальное расширение](#что-делало-оригинальное-расширение) · [Что было исправлено](#что-было-исправлено) · [Новые функции](#новые-функции) · [Установка](#установка) · [Использование](#использование) · [📖 Документация](https://github.com/Timik232/vk-styles-cleaned/wiki) · [Структура файлов](#структура-файлов) · [Contributing](#участие-в-проекте-contributing) · [💜 Поддержать](#поддержать-проект) · [О проекте](#о-проекте)
 
 ### Описание
 
@@ -150,6 +150,12 @@ CI должен пройти без ошибок — это обязательн
 **Безопасность**
 - Если вы обнаружили уязвимость, создайте **приватный** Issue с тегом `security`
 
+### Поддержать проект
+
+Если вам нравится расширение и вы хотите поддержать разработку — можно отправить добровольное пожертвование:
+
+[![Donation Alerts](https://img.shields.io/badge/DonationAlerts-Поддержать-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0xIDE1aC0ydi0yaDJ2MnptMC00aC0yVjdoMnY2eiIvPjwvc3ZnPg==)](https://www.donationalerts.com/r/ser13volk)
+
 ### О проекте
 
 Этот репозиторий создан в **образовательных и исследовательских целях** в области информационной безопасности — для изучения, документирования и нейтрализации вредоносного кода, обнаруженного исследователями Koi Security.
@@ -160,7 +166,7 @@ CI должен пройти без ошибок — это обязательн
 
 ## English
 
-**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [New features](#new-features) · [Installation](#installation) · [Usage](#usage) · [📖 Documentation](https://github.com/Timik232/vk-styles-cleaned/wiki) · [File structure](#file-structure) · [Contributing](#contributing) · [License](#license)
+**Contents:** [Description](#description) · [What the original extension did](#what-the-original-extension-did) · [What was fixed](#what-was-fixed) · [New features](#new-features) · [Installation](#installation) · [Usage](#usage) · [📖 Documentation](https://github.com/Timik232/vk-styles-cleaned/wiki) · [File structure](#file-structure) · [Contributing](#contributing) · [💜 Support](#support-the-project) · [License](#license)
 
 ### Description
 
@@ -303,6 +309,12 @@ CI must pass — this is a mandatory requirement for PR review.
 
 **Security**
 - If you discover a vulnerability, create a **private** Issue with the `security` label
+
+### Support the Project
+
+If you enjoy the extension and want to support development, you can send a voluntary donation:
+
+[![Donation Alerts](https://img.shields.io/badge/DonationAlerts-Support-orange?style=for-the-badge)](https://www.donationalerts.com/r/ser13volk)
 
 ---
 
