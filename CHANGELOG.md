@@ -5,6 +5,16 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.4] - 2026-02-22
+
+### Added
+- Ссылка на добровольное пожертвование (DonationAlerts) в README
+
+## [2.0.5.3] - 2026-02-22
+
+### Fixed
+- Исправлено сочетание Alt+B для тогла фона — добавлен preventDefault/stopPropagation для предотвращения перехвата VK
+
 ## [2.0.5.2] - 2026-02-22
 
 ### Fixed
