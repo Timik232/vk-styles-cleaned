@@ -5,16 +5,6 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [2.0.6.2] - 2025-02-22
-
-### Fixed
-- Настройка «Текст шапки» теперь корректно меняет цвет текста и кнопок верхнего плеера в новом интерфейсе VK (селектор `data-testid=TopAudioPlayer` вместо устаревшего `#web_spa_top_audio_player`)
-
-## [2.0.6.1] - 2025-02-22
-
-### Fixed
-- Укорочен текст «Поставьте ⭐ на GitHub» в нижней части панели — текст обрезался
-
 ## [2.0.6] - 2025-02-22
 
 ### Added
@@ -23,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Ссылка на DonationAlerts в README
 
 ### Fixed
+- Настройка «Текст шапки» теперь корректно меняет цвет текста и кнопок верхнего плеера в новом интерфейсе VK (селектор `data-testid=TopAudioPlayer` вместо устаревшего `#web_spa_top_audio_player`)
+- Укорочен текст «Поставьте ⭐ на GitHub» в нижней части панели — текст обрезался
 - Наложение элементов меню боковой панели в режиме «Фикс» при скролле (футер перекрывал пункты меню)
 - Ошибка "Cannot access contents of the page" в Яндекс Браузере при запуске `executeScript`
 - Сочетание Alt+B для переключения фона — добавлен preventDefault/stopPropagation
