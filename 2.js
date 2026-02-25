@@ -352,7 +352,6 @@ s:()=>{
 				case 'cp_kc':st.kc(s,k);break;
 				case 'cp_uc':st.uc(s,k);break;
 				case 'cp_bst':st.bs(1,2,k);break;
-				case 'cp_u':End(e);st.u(1);break;
 
 				case 'cp_v':if(E!=e.target)s?st_.vp>0&&st.vo(-1):st.v();break;
 				case 'cp_vp':E!=e.target&&st.vp([].indexOf.call(E.children,e.target)+1);break;
@@ -457,8 +456,7 @@ s:()=>{
 		cp.addEventListener('contextmenu',e=>{
 			switch(e.target.id){
 				case 'cp_bsc':case 'cp_c4':End(e);break;
-				case 'cp_u':End(e);D&&log(L.st_)
-			}
+				}
 		});
 		cp.addEventListener('mousedown',e=>{
 			let a=(a,b,c)=>{let x=e.x-e.offsetX, y=e.y-e.offsetY, p=e=>a(1,b,e.shiftKey?-1:clamp(e.x-x-8,24),e.ctrlKey?-1:clamp(e.y-y-8,24)), m=e=>e.button==0&&p(e), s=e=>{sync(1,c);w.removeEventListener('mousemove',m)};w.addEventListener('mousemove',m);w.addEventListener('mouseup',s,{once:1});p(e.button==0?e:{x:x+20,y:y+20})};
@@ -469,7 +467,6 @@ s:()=>{
 		});
 		cp.addEventListener('mouseenter',fe);
 		cpo.addEventListener('mouseenter',fe);
-		cp_u.addEventListener('mouseenter',e=>st.tt(cp_u.parentElement,l.u,-5));
 		cp_gs.addEventListener('mouseenter',e=>e.target.focus());
 		cp_gs.addEventListener('paste',e=>st.ss(g(e)));
 		cp_cp.addEventListener('paste',e=>st.t(0,rgb2hsl(g(e))));
@@ -2068,7 +2065,7 @@ l=lang()?{
 	abm4:'Друзья',
 	abim:'Скрытые беседы',
 	abimInfo:'Функция активна пока расширение включено, даже если тема отключена !!!<br><br>Показать / Скрыть: <b>Alt</b> + <b>I</b>',
-	u:'Нажмите на версию чтобы проверить наличие горячих обновлений',
+	u:'',
 	e:'ошибка',
 	h:'Скрыть',
 	s:'Показать',
@@ -2184,8 +2181,7 @@ l=lang()?{
 	SlideShow:'Слайд-шоу',
 	SlideShowRandom:'Слайд-шоу в случайном порядке',
 	LatestWallpapers:'Последние фоны',
-	Themes:'Темы для вк',
-	ThemeInfo:'Выбирайте из готовых, или делитесь своими темами',
+	Star:'Поставьте ⭐ на GitHub',
 	ThemeIns:'Тема установлена',
 	ThemeErr:'Тема с ошибкой',
 	ThemeErrCut:'Вк имеет ограничение длины текста.<br>Удалите ненужные фоны из темы или сохраните в текстовый файл',
@@ -2193,8 +2189,7 @@ l=lang()?{
 	Slt:'Установить',
 	sLt:'живую',
 	slT:'тему',
-	LiveWallpaper:'Живые обои',
-	LiveWallpaperInfo:'Выбирайте любые живые обои, и устанавливайте в 1 клик',
+
 	imn:'Открывать мессенджер из уведомлений',
 	imnInfo:'При нажатии на уведомление о новом сообщении, вместо мини-чата открывается мессенджер',
 	rmInfo:'Перемещает положение списка чатов в новом интерфейсе мессенджера',
@@ -2275,7 +2270,7 @@ l=lang()?{
 	abm4:'Friends',
 	abim:'Hidden conversations',
 	abimInfo:'The function is active while the extension is enabled, even if the theme is disabled !!!<br><br>Show / Hide: <b>Alt</b> + <b>I</b>',
-	u:'Click on version to check for hot updates',
+	u:'',
 	e:'error',
 	h:'Hide',
 	s:'Show',
@@ -2391,8 +2386,7 @@ l=lang()?{
 	SlideShow:'Slide show',
 	SlideShowRandom:'Slideshow in random order',
 	LatestWallpapers:'Latest wallpapers',
-	Themes:'VK themes',
-	ThemeInfo:'Choose from ready or share your theme',
+	Star:'Give us a ⭐ on GitHub',
 	ThemeIns:'Theme installed',
 	ThemeErr:'Theme with error',
 	ThemeErrCut:'Vk has text length limitation.<br>Remove unnecessary backgrounds from theme or save to text file',
@@ -2400,8 +2394,7 @@ l=lang()?{
 	Slt:'Set',
 	sLt:'live',
 	slT:'theme',
-	LiveWallpaper:'Live wallpaper',
-	LiveWallpaperInfo:'Choose any live wallpaper and set in 1 click',
+
 	imn:'Open messenger from notifications',
 	imnInfo:'Clicking on the new message notification, opens the messenger instead of the mini-chat',
 	rmInfo:'Moves the position of the chat list in the new messenger interface',
@@ -2518,10 +2511,10 @@ cpw.innerHTML=`<div id="cp_s" ${st_.pv?'class="h"':''}></div><div id="cp"><form>
 </div>
 <div id="cp_hp" data-tt="st.tt(this,'${l.undo}: <b>Ctrl</b> + <b>Z</b>',40,36,0,1)"></div>
 <div id="cp_hn" data-tt="st.tt(this,'${l.redo}: <b>Ctrl</b> + <b>Y</b>',40,36,0,1)"></div>
-<a class="cp_l" href="/2style">
+<a class="cp_l" href="https://github.com/Timik232/vk-styles-cleaned" target="_blank">
 	<img src="${st_.l}i/l.svg">
 	<div>${st_.n}</div>
-	<div id="cp_u">${st_.v}</div>
+	<div>${st_.v}</div>
 </a>
 <div id="cp_gs" contenteditable="true" data-tt="st.tt(this,'${l.gs}',0)"></div>
 <div id="cp_af" data-tt="st.tt(this,'${l.AdditionalFeatures}',0)"></div>
@@ -2640,7 +2633,7 @@ cpw.innerHTML=`<div id="cp_s" ${st_.pv?'class="h"':''}></div><div id="cp"><form>
 	<div class="cp_ht"><div class="checkbox" id="cp_ce" data-tt="st.tt(this,'${l.ClockPinInfo}')">${l.ClockPin}</div><div class="checkbox" id="cp_c9" data-tt="st.tt(this,'${l.ClockDragInfo}')">${l.ClockDrag}</div></div>
 </div>
 <div class="cp_t l">
-	<span data-tt="st.tt(this,'${l.ThemeInfo}')">${l.Themes}</span><a id="cp_l" data-tt="st.tt(this,'${l.LiveWallpaperInfo}')">${l.LiveWallpaper}</a>
+	<a href="https://github.com/Timik232/vk-styles-cleaned" target="_blank" style="text-decoration:none;opacity:.6">${l.Star}</a>
 </div></form></div>
 <svg>
 	<filter id="n15"><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter>
@@ -2690,73 +2683,6 @@ w.addEventListener('keydown',e=>{	//log('keydown => ',e);
 w.addEventListener('mousedown',e=>{
 	if(e.button==0&&e.target.id=='cp_s')st.s();
 	if(e.button<2&&st.aw.c)st.aw.c(e);
-	if(e.button==0&&e.target.id=='cp_l'){
-		End(e);
-		if(cp.video)cp.video.init();
-		else st.dh('video.getAlbums',{owner_id:'-168874636',extended:1},d=>{
-			let Albums = [], root = ce(), nav = ce('nav'), main = ce(), section = ce('section')
-			, render = (items,arr,type)=>{
-				items.forEach(e=>{
-					let Title = e.title
-					, Count = e.count || Math.floor(e.duration/60)+':'+(e.duration%60+'').padStart(2,0)
-					, Img = e.image && (e.image.find(e=>!e.with_padding&&e.width==720) || e.image.pop()).url
-					, Card = type ? ce('album') : ce('a')
-					, Button = type ? ce(e.is_subscribed ? 'u' : 's') : ce('b');
-
-					Card.append(Button);
-					if(type){
-						(Card.n = ce()).textContent = Title;
-						Card.a = e.id;
-						Card.c = Count;
-						Card.arr = [];
-					}else{
-						Card.href = (st_.m?'?z=':'/')+'video'+e.owner_id+'_'+e.id;
-						Card.v = (e.trailer||e.files)?.mp4_360;
-					}
-					Card.style.cssText = `--bg:url(${Img});--t:${JSON.stringify(Title)};--c:'${Count}'`;
-					arr.push(Card)
-				});
-				section.replaceChildren(...arr);
-			}, load = e => st.dh('video.get',{owner_id:'-168874636', album_id: Albums.Card.a, count: 30, offset: Albums.Card.arr.length},d=>{render(d.items,Albums.Card.arr);Albums.load = 0;scroll()})
-			, scroll = e => {
-				if(!cp.a)return;
-				if(Albums.Card){
-					Albums.Card.last_scroll = section.scrollTop;
-					if(st_.mode && !Albums.load && (Albums.load = section.scrollHeight-section.clientHeight-section.scrollTop<1e3 && Albums.Card.arr.length < Albums.Card.c)) load()
-				}else Albums.last_scroll = section.scrollTop
-			}, prev = e => {
-				let Card = e.target.closest('a'), v = Card?.v;
-				if(v && e.target == Card){
-					if(e.type == 'mouseenter')Card.t = setTimeout(()=>{let s,p=v=>Card.t&&v.readyState>2&&(v.currentTime=0, Card.prepend(v), v.play());if(typeof v == 'string')s=v, Card.v=v=ce('video'), v.loop=v.muted=!0, v.src=s, v.addEventListener('canplay',()=>p(v),{once:1});else p(v)}, 150);
-					else if(e.type == 'mouseleave')clearTimeout(Card.t), Card.t=0, v.isConnected && (v.pause(), v.remove())
-				}
-			};
-			render(d.items,Albums,1);
-			root.id = 'cp_video'; main.textContent = l.LiveWallpaper; nav.append(main); root.append(nav,section);
-
-			section.addEventListener('mouseenter',fe);
-			section.addEventListener('mouseenter',prev,{capture:1});
-			section.addEventListener('mouseleave',prev,{capture:1});
-			section.addEventListener('scroll',scroll);
-			(new ResizeObserver(scroll)).observe(section);
-			root.addEventListener('click',e=>{
-				e.target == main && (Albums.Card = 0, section.replaceChildren(...Albums), main.nextElementSibling.remove(), section.scroll(0,Albums.last_scroll));
-				e.target.tagName == 'ALBUM' && (Albums.Card = e.target, nav.append(e.target.n), e.target.arr.length ? (section.replaceChildren(...e.target.arr), section.scroll(0,e.target.last_scroll)) : (Albums.load = 1, section.replaceChildren(), load()));
-				e.target.tagName == 'S' && st.dh('video.subscribeToAlbum',{owner_id:'-168874636', album_id: e.target.parentElement.a},d=>e.target.replaceWith(ce('u')));
-				e.target.tagName == 'U' && st.dh('video.unsubscribeFromAlbum',{owner_id:'-168874636', album_id: e.target.parentElement.a},d=>e.target.replaceWith(ce('s')));
-				e.target.tagName == 'B' && (End(e),st.bg(1,e.target.parentElement.href));
-				// st.dh('catalog.getOwnerVideosSearch',{owner_id:'-168874636', q: q: 'mass effect'},d=>{});
-			});
-			cp.video=root;
-			root.init=()=>{
-				cp.scroll(0,0);
-				cp.append(root);
-				cp.animate([{transform:'translateX(600px)'},{transform:'none'}],500);
-				section.scroll(0,Albums.Card ? Albums.Card.last_scroll : Albums.last_scroll)
-			};
-			root.init()
-		})
-	}
 	if(e.button==0&&st_.vo&&!st_.bo&&e.target.closest('#cpv')){
 		End(e);e=e.target.closest('svg');e&&e.parentElement!=cpo?st.k(['prev','pause','next'][ie(e)]):w.AudioUtils?.getLayer().toggle()
 	}

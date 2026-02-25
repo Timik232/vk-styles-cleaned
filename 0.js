@@ -11,7 +11,7 @@ icon=e=>{
 	else x.strokeStyle='white',x.lineWidth=4,x.stroke(new Path2D('M18 16h-8v18h8m-6-9h5m12-1h-6v12m17-12h-6v12'));
 	chrome.action.setIcon({imageData:x.getImageData(0,0,48,48)})
 },
-j=(e,a=0,k)=>chrome.tabs.query(vk,t=>(k==1?[t[0]]:k?t.filter(t=>k==t.id):t).forEach(t=>chrome.scripting.executeScript({target:{tabId:t.id},func:e,args:[a],world:'MAIN'}))),
+j=(e,a=0,k)=>chrome.tabs.query(vk,t=>(k==1?[t[0]]:k?t.filter(t=>k==t.id):t).filter(Boolean).forEach(t=>chrome.scripting.executeScript({target:{tabId:t.id},func:e,args:[a],world:'MAIN'}).catch(()=>{}))),
 t=(e,a)=>{
 	let o={mode:e?+!a.mode:a.mode!=void 0?a.mode:1,n:mf.short_name,url:mf.homepage_url}, c=(a='',b='')=>{a=a.split('.');b=b.split('.');for(let i=0,m=Math.max(a.length,b.length);i<m;i++){let n=+a[i]||0,o=+b[i]||0;if(o>n)return 0;if(n>o)return 1}return 0};
 	e?j(e=>window.st?st.m(e):location.reload(),o.mode):c(mf.version,a.v)&&(o.v=mf.version,o.C=0,j(()=>location.reload()));
