@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.6.2] - 2025-02-22
+
+### Fixed
+- Настройка «Текст шапки» теперь корректно меняет цвет текста и кнопок верхнего плеера в новом интерфейсе VK (селектор `data-testid=TopAudioPlayer` вместо устаревшего `#web_spa_top_audio_player`)
+
 ## [2.0.6.1] - 2025-02-22
 
 ### Fixed
