@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.6.1] - 2025-02-22
+
+### Fixed
+- Укорочен текст «Поставьте ⭐ на GitHub» в нижней части панели — текст обрезался
+
 ## [2.0.6] - 2025-02-22
 
 ### Added
