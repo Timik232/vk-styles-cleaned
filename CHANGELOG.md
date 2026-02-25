@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.5] - 2026-02-22
+
+### Fixed
+- Исправлена ошибка "Cannot access contents of the page" в Яндекс Браузере — добавлен `.catch()` и `.filter(Boolean)` в `executeScript` вызов
+
 ## [2.0.5.4] - 2026-02-22
 
 ### Added
