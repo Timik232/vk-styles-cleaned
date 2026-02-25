@@ -152,7 +152,9 @@ CI должен пройти без ошибок — это обязательн
 
 ### Поддержать проект
 
-Если вам нравится расширение и вы хотите поддержать разработку — можно отправить добровольное пожертвование:
+Если вам нравится расширение и вы хотите поблагодарить — поставьте ⭐ звёздочку на проект! Это лучшая поддержка для открытого проекта.
+
+Также можно отправить добровольное пожертвование:
 
 [![Donation Alerts](https://img.shields.io/badge/DonationAlerts-Поддержать-orange?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0xIDE1aC0ydi0yaDJ2MnptMC00aC0yVjdoMnY2eiIvPjwvc3ZnPg==)](https://www.donationalerts.com/r/ser13volk)
 
@@ -312,7 +314,9 @@ CI must pass — this is a mandatory requirement for PR review.
 
 ### Support the Project
 
-If you enjoy the extension and want to support development, you can send a voluntary donation:
+If you enjoy the extension and want to say thanks — give us a ⭐ star on the project! It's the best support for an open-source project.
+
+You can also send a voluntary donation:
 
 [![Donation Alerts](https://img.shields.io/badge/DonationAlerts-Support-orange?style=for-the-badge)](https://www.donationalerts.com/r/ser13volk)
 

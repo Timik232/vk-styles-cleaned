@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.6] - 2025-02-22
+
+### Changed
+- Заменена ссылка на паблик атакующего (/2style) на ссылку на GitHub-репозиторий
+- Удалена кнопка обновления версии из боковой панели
+- Удалены элементы «Темы для ВК» и «Живые обои» из нижней части панели (ссылались на группу атакующего)
+- Добавлено сообщение «Поставьте ⭐ звёздочку на GitHub» в панель и README
+
 ## [2.0.5.5] - 2026-02-22
 
 ### Fixed
