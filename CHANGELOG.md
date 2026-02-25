@@ -5,6 +5,11 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.5.7] - 2025-02-22
+
+### Fixed
+- Исправлено наложение элементов меню боковой панели в режиме «Фикс» при скролле (футер перекрывал пункты меню)
+
 ## [2.0.5.6] - 2025-02-22
 
 ### Changed
