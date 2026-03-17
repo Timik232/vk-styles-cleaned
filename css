@@ -1021,6 +1021,9 @@ svg[class*=PageWrapper__logo]{color:#fff3!important}
 #side_bar ol li>:first-child,#side_bar ol li>:first-child>span,#side_bar ol li>:first-child svg,#side_bar_inner>div>a,.left_menu_nav,.left_restore_link,.LeftMenuAppPromo__icon{
 	color:var(--mc)!important
 }
+#side_bar [class*=ProfileIndicatorBadge__badgeAddStory],#side_bar [class*=ProfileIndicatorBadge__badgeAddStory] *{
+	color:var(--mc)!important
+}
 .rdrMonthName,div[contenteditable=true],h1,h2,input,body{
 	color:var(--eee)
 }
@@ -1658,8 +1661,10 @@ html.rm .nim-dialog.nim-dialog_selected{box-shadow:inset 3px 0 0 0 var(--g3)}
 .page_name,h2.page_name{white-space:nowrap}
 .pv_photo_wrap{width:max-content}
 
-html.mf #side_bar{position:sticky;top:0!important;max-height:100vh;overflow-y:auto;scrollbar-width:none}
-html.mf #layout_sidebar{position:sticky;top:var(--spa-layout-header-height,48px);align-self:flex-start;max-height:calc(100vh - var(--spa-layout-header-height,48px));overflow-y:auto;scrollbar-width:none}
+html.mf #side_bar{position:sticky;top:0!important;overflow:visible}
+html.mf #layout_sidebar{position:sticky;top:var(--spa-layout-header-height,48px);align-self:flex-start;overflow:visible}
+html.mf #side_bar_inner{max-height:none;overflow:visible;margin-left:0!important}
+html.mf.ns #side_bar_inner,html.mf.mb #side_bar_inner,html.mf.mm #side_bar_inner,html.mf.ns.mb #side_bar_inner,html.mf.mb.mm #side_bar_inner,html.mf.ns.mm #side_bar_inner{margin-left:0!important}
 #side_bar_inner{height:fit-content!important;margin:calc(var(--header-height) + 7px) 0 0 -15px!important;padding:8px 5px 8px 6px!important}
 html.ns #side_bar_inner{margin:var(--header-height) 0 0 -10px!important}
 html.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -25px!important}
@@ -1979,7 +1984,7 @@ html.imb :is(.AvatarRich,.author,.BasicAvatar,.vkuiAvatar__host,.AvatarCard__nam
 	--statusbar_alternate_legacy_background:var(--black_alpha24);
 	--stories_create_button_background_from:var(--n22e);
 	--stories_create_button_background_to:var(--n29e);
-	--stories_create_button_foreground:var(--n777);
+	--stories_create_button_foreground:var(--mc);
 	--stories_skeleton_loader_background:var(--ccc);
 	--switch_ios_off_border:var(--n29e);
 	--stories_create_button_icon_background:var(--white);

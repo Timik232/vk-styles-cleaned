@@ -5,6 +5,13 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.7] - 2026-03-17
+
+### Fixed
+- Исправлена синхронизация линии ползунка громкости VK при изменении громкости колесом/клавишами: UI обновляется вместе со звуком
+- Исправлен цвет текста элемента «Новая история» в левом меню: текст больше не становится чёрным и читается в тёмной теме
+- Доработан режим «Фикс»: левое меню больше не обрезается слева и не получает внутренний скролл, сохраняя обычный внешний вид
+
 ## [2.0.6] - 2025-02-22
 
 ### Added
