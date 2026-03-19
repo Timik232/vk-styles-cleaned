@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Firefox version: aligned manifest/docs compatibility metadata with the current Firefox build requirements
 - Visualizer: fixed the `Strobes` effect so it no longer darkens the whole screen and reacts to audio by brightening
 
+### Known issues
+- Firefox version is still unstable and may fail to work correctly in some environments
+
 ## [2.0.7] - 2026-03-17
 
 ### Fixed
