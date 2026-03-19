@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## [2.0.7.1] - 2026-03-19
 
 ### Fixed
-- Firefox version: migrated startup and command handling to Promise-based `browser.*` APIs
-- Firefox version: removed unsupported `commands.*.global` manifest properties that produced warnings in `about:debugging`
-- Firefox version: aligned manifest/docs compatibility metadata with the current Firefox build requirements
-- Visualizer: fixed the `Strobes` effect so it no longer darkens the whole screen and reacts to audio by brightening
+- Migrated Firefox startup and command handling to Promise-based `browser.*` APIs
+- Removed unsupported `commands.*.global` manifest properties from the Firefox build
+- Updated Firefox compatibility metadata and docs to match the current build requirements
+- Fixed the visualizer `Strobes` effect so it flashes instead of making the whole screen darker
 
 ## [2.0.7] - 2026-03-17
 
