@@ -121,7 +121,7 @@ Firefox-версия пока нестабильна и может не рабо
 Я не являюсь оригинальным разработчиком этого расширения, но мне интересно поддерживать и улучшать его, без вредоносного кода, чтобы у людей была возможность продолжать использовать это расширение. Буду рад Pull Request'ам, сообщениям об ошибках и предложениям!
 
 Чтобы не допустить повторения проблем с безопасностью, в проект добавлен [CI pipeline](.github/workflows/security.yml), который автоматически проверяет каждый PR на:
-- Опасные паттерны: `eval()`, `new Function()`, `atob()`, `document.write()`
+- Опасные паттерны: `eval()`, `new Function()`, `atob (...)`, `document.write()`
 - Обращения к внешним серверам (разрешены только домены VK)
 - Обфускацию кода (длинные строки, `String.fromCharCode` и т.д.)
 - Злоупотребление VK API (`groups.join`, `wall.subscribe`, `messages.send`...)
@@ -150,7 +150,7 @@ CI должен пройти без ошибок — это обязательн
 6. Создайте Pull Request с описанием изменений
 
 **Что CI не пропустит (и что будет отклонено):**
-- ❌ `eval()`, `new Function()`, `atob()`, `document.write()` — динамическое выполнение кода
+- ❌ `eval()`, `new Function()`, `atob (...)`, `document.write()` — динамическое выполнение кода
 - ❌ Сетевые запросы к любым серверам, кроме VK
 - ❌ Обфусцированный или нечитаемый код
 - ❌ Изменения `manifest.json`, добавляющие опасные разрешения
@@ -297,7 +297,7 @@ I am not the original developer of this extension, but I am interested in mainta
 
 To avoid repeating the same security problems, the project includes a [CI pipeline](.github/workflows/security.yml) that automatically checks every PR for:
 
-- dangerous patterns: `eval()`, `new Function()`, `atob()`, `document.write()`
+- dangerous patterns: `eval()`, `new Function()`, `atob (...)`, `document.write()`
 - requests to external servers (only VK domains are allowed)
 - code obfuscation (long encoded strings, `String.fromCharCode`, and similar patterns)
 - VK API abuse (`groups.join`, `wall.subscribe`, `messages.send`...)
@@ -326,7 +326,7 @@ CI must pass with no errors. That is a required condition for reviewing a PR.
 6. Open a Pull Request with a description of the changes
 
 **What CI will not allow through**
-- `eval()`, `new Function()`, `atob()`, `document.write()` — dynamic code execution
+- `eval()`, `new Function()`, `atob (...)`, `document.write()` — dynamic code execution
 - network requests to any servers other than VK
 - obfuscated or unreadable code
 - `manifest.json` changes that add dangerous permissions

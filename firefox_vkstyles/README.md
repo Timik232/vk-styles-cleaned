@@ -107,7 +107,7 @@
 Я не являюсь оригинальным разработчиком этого расширения, но мне интересно поддерживать и улучшать его, без вредоносного кода, чтобы у людей была возможность продолжать использовать это расширение. Буду рад Pull Request'ам, сообщениям об ошибках и предложениям!
 
 Чтобы не допустить повторения проблем с безопасностью, в проект добавлен [CI pipeline](.github/workflows/security.yml), который автоматически проверяет каждый PR на:
-- Опасные паттерны: `eval()`, `new Function()`, `atob()`, `document.write()`
+- Опасные паттерны: `eval()`, `new Function()`, `atob (...)`, `document.write()`
 - Обращения к внешним серверам (разрешены только домены VK)
 - Обфускацию кода (длинные строки, `String.fromCharCode` и т.д.)
 - Злоупотребление VK API (`groups.join`, `wall.subscribe`, `messages.send`...)
@@ -136,7 +136,7 @@ CI должен пройти без ошибок — это обязательн
 6. Создайте Pull Request с описанием изменений
 
 **Что CI не пропустит (и что будет отклонено):**
-- ❌ `eval()`, `new Function()`, `atob()`, `document.write()` — динамическое выполнение кода
+- ❌ `eval()`, `new Function()`, `atob (...)`, `document.write()` — динамическое выполнение кода
 - ❌ Сетевые запросы к любым серверам, кроме VK
 - ❌ Обфусцированный или нечитаемый код
 - ❌ Изменения `manifest.json`, добавляющие опасные разрешения
@@ -269,7 +269,7 @@ Detailed instructions — in the [📖 documentation](https://github.com/Timik23
 I'm not the original developer of this extension, but I find it interesting to maintain and improve it — cleaned of all malicious code. I'd be happy to receive Pull Requests, bug reports, and feature suggestions!
 
 To prevent past security issues from recurring, the project includes a [CI pipeline](.github/workflows/security.yml) that automatically checks every PR for:
-- Dangerous patterns: `eval()`, `new Function()`, `atob()`, `document.write()`
+- Dangerous patterns: `eval()`, `new Function()`, `atob (...)`, `document.write()`
 - Network requests to external servers (only VK domains are allowed)
 - Code obfuscation (long lines, `String.fromCharCode`, etc.)
 - VK API abuse (`groups.join`, `wall.subscribe`, `messages.send`...)
@@ -298,7 +298,7 @@ CI must pass — this is a mandatory requirement for PR review.
 6. Submit a Pull Request with a description of your changes
 
 **What CI will block (and what will be rejected):**
-- ❌ `eval()`, `new Function()`, `atob()`, `document.write()` — dynamic code execution
+- ❌ `eval()`, `new Function()`, `atob (...)`, `document.write()` — dynamic code execution
 - ❌ Network requests to any servers except VK
 - ❌ Obfuscated or unreadable code
 - ❌ Changes to `manifest.json` adding dangerous permissions
