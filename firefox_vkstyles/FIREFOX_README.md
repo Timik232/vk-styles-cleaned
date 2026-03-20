@@ -1,6 +1,6 @@
 # VK Styles Clean - Firefox Edition
 
-**Версия**: 2.0.7 (Firefox)  
+**Версия**: 2.0.7.1 (Firefox)  
 **Совместимость**: Firefox 126+
 
 ## Описание
