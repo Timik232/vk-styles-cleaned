@@ -100,10 +100,7 @@ Firefox-версия пока нестабильна и может не рабо
 1. Откройте `about:debugging`.
 2. Выберите `This Firefox`.
 3. Нажмите `Load Temporary Add-on`.
-4. Выберите [manifest.json](/t:/pythonProject/vk-styles/firefox_vkstyles/manifest.json) из папки `firefox_vkstyles/`.
-
-Подробности: [FIREFOX_INSTALLATION_GUIDE.md](/t:/pythonProject/vk-styles/FIREFOX_INSTALLATION_GUIDE.md)
-
+4. Выберите [`manifest.json`](firefox_vkstyles/manifest.json) из папки `firefox_vkstyles/`.
 ### Структура файлов
 
 | Файл | Описание |
