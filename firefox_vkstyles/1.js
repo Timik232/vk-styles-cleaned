@@ -32,10 +32,12 @@ db={
 sync=e=>{
 	e=r0(e)||JSON.parse(L.st_||'{}');
 	try{
-		db.s('sync',Object.assign(o,e));
-		browser.storage.local.set(e);
+		// Preserve the full payload for IndexedDB storage
+		const fullForDb = Object.assign({}, e);
+		// Sanitize the data before writing to browser.storage.local
 		if(e.ia && new TextEncoder().encode(e.ia).length>8188)e.ia=new TextDecoder().decode(new TextEncoder().encode(e.ia).slice(-8188)).split(', ').slice(1).join(', ');
 		delete e.C;delete e.v;
+		db.s('sync',Object.assign(o,fullForDb));
 		browser.storage.local.set(e);
 	}catch(a){L.st_reload=1;location.reload()}
 };
