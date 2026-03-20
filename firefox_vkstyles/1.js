@@ -1,8 +1,10 @@
 'use strict';
 let L=localStorage, o={}, v, b=document.lastChild,st0=document.createElement('style'),st1=document.createElement('style'),st2=document.createElement('style'),cpw=document.createElement('div'),
+r0=e=>{try{return e&&typeof e=='object'?JSON.parse(JSON.stringify(e)):e}catch(a){return {}}},
 r=(p,h,x)=>{x=new XMLHttpRequest();x.onreadystatechange=()=>x.readyState==4&&h(x.response);x.open('get',p,!0);x.send()},
 a=e=>{(e?(a=0,document.body):b).append(cpw);b.append(st0,st1,st2);if(v)for(let e of document.querySelectorAll('audio'))e.remove()},
 l=l=>{
+	l=r0(l)||{};
 	let e = Object.assign({},l); Object.assign(o,l); delete e.C;
 	v = e.e||e.vp>0;
 	e.m = !/(^|\.)m\./.test(location.host);
@@ -28,7 +30,7 @@ db={
 	s:(k,v)=>db.o(o=>db.t(o).put({key:k,val:v}))
 },
 sync=e=>{
-	e=e||JSON.parse(L.st_||'{}');
+	e=r0(e)||JSON.parse(L.st_||'{}');
 	try{
 		db.s('sync',Object.assign(o,e));
 		browser.storage.local.set(e);
@@ -40,7 +42,10 @@ sync=e=>{
 st0.textContent=L.st_bgc&&`:root{background:${L.st_bgc}!important}body,.cp_fg{display:none}`;
 cpw.id='cpw';st0.id='st0';st1.id='st1';st2.id='st2';b.append(st0);document.readyState=='complete'?a(1):document.addEventListener('DOMContentLoaded',a);cpw.addEventListener('sync',()=>sync());
 (async()=>{
-	let a=await browser.storage.local.get(null).catch(()=>({}))||{};
+	let a=r0(await browser.storage.local.get(null).catch(()=>({})))||{};
 	if(a.z)return l(a);
-	db.g('sync',(c={})=>{l(Object.assign(c,a));sync(c)})
+	db.g('sync',(c={})=>{
+		let e=Object.assign({},r0(c)||{},a);
+		l(e);sync(e)
+	})
 })()
