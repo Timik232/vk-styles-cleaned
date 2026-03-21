@@ -100,7 +100,10 @@ Firefox-версия пока нестабильна и может не рабо
 1. Откройте `about:debugging`.
 2. Выберите `This Firefox`.
 3. Нажмите `Load Temporary Add-on`.
-4. Выберите [`manifest.json`](firefox_vkstyles/manifest.json) из папки `firefox_vkstyles/`.
+4. Выберите [manifest.json](firefox_vkstyles/manifest.json) из папки `firefox_vkstyles/`.
+
+Подробности: [FIREFOX_INSTALLATION_GUIDE.md](FIREFOX_INSTALLATION_GUIDE.md)
+
 ### Структура файлов
 
 | Файл | Описание |
