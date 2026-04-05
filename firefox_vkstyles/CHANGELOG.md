@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.5] - 2026-04-05
+
+### Fixed
+- Синхронизирован внешний вид боковой панели с состоянием `2.0.7`, включая корректный режим «Фикс» без внутреннего скролла
+
+### Changed
+- Обновлена версия расширения до `2.0.8.5`
+
 ## [2.0.8.4] - 2026-04-05
 
 ### Fixed
