@@ -40,44 +40,41 @@ jobs:
             echo "Consider updating manifest.json before release."
           fi
 
+      - name: Prepare release staging
+        run: |
+          rm -rf build
+          mkdir -p build/package
+          cp manifest.json build/package/
+          cp 0.js build/package/
+          cp 1.js build/package/
+          cp 2.js build/package/
+          cp css build/package/
+          cp mcss build/package/
+          cp -r _locales build/package/
+          cp -r i build/package/
+          echo "Staged release files:"
+          find build/package -maxdepth 2 -type f | sort
+
       - name: Build extension ZIP
         run: |
-          mkdir -p build
-          zip -r "build/vk-styles-clean-${{ inputs.version }}.zip" \
-            manifest.json \
-            0.js \
-            1.js \
-            2.js \
-            css \
-            mcss \
-            _locales/ \
-            i/ \
-            -x "*.git*" "*.github*"
-          echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.zip"
-          ls -lh build/
+          cd build/package
+          zip -r "../vk-styles-clean-${{ inputs.version }}.zip" .
+          echo "Built: build/vk-styles-clean-${{ inputs.version }}.zip"
+          ls -lh ..
 
       - name: Build extension RAR
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq rar
-          rar a -r "build/vk-styles-clean-${{ inputs.version }}.rar" \
-            manifest.json \
-            0.js \
-            1.js \
-            2.js \
-            css \
-            mcss \
-            _locales/ \
-            i/ \
-            -x*.git* -x*.github*
-          echo "📦 Built: build/vk-styles-clean-${{ inputs.version }}.rar"
-          ls -lh build/
+          cd build/package
+          rar a -r "../vk-styles-clean-${{ inputs.version }}.rar" .
+          echo "Built: build/vk-styles-clean-${{ inputs.version }}.rar"
+          ls -lh ..
 
       - name: Extract changelog for version
         id: notes
         run: |
           VERSION="${{ inputs.version }}"
           VERSION="${VERSION#v}"
-          # Extract section between ## [VERSION] and next ## [
           NOTES=$(awk "/^## \\[${VERSION}\\]/{found=1; next} /^## \\[/{if(found) exit} found{print}" CHANGELOG.md)
           if [ -z "$NOTES" ]; then
             echo "::warning::No changelog entry found for version $VERSION in CHANGELOG.md"
@@ -105,9 +102,9 @@ jobs:
             2. Распакуйте в папку / Extract to a folder
             3. Откройте страницу расширений / Open extensions page:
                - **Chrome / Edge:** `chrome://extensions/`
-               - **Яндекс Браузер:** `browser://extensions/`
-            4. Включите «Режим разработчика» / Enable "Developer mode" (top-right toggle)
-            5. «Загрузить распакованное» / "Load unpacked" → выберите папку / select the folder
+               - **Другие браузеры:** `browser://extensions/`
+            4. Включите "Режим разработчика" / Enable "Developer mode" (top-right toggle)
+            5. Нажмите "Загрузить распакованное" / "Load unpacked" and select the folder
           files: |
             build/vk-styles-clean-${{ inputs.version }}.zip
             build/vk-styles-clean-${{ inputs.version }}.rar
