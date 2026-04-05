@@ -1680,7 +1680,7 @@ html.mb.mm #side_bar ol li>:first-child>:nth-child(3):not(.vkuiTappable__ripple)
 .side_bar_nav_wrap,#side_bar ol{margin:0!important;padding:0!important}
 html.mm.mb #side_bar ol li,html.mm.ns:not(.mb) #side_bar ol li,html.Pl.mb #side_bar ol li,html.Pl.ns #side_bar ol li{margin-left:-2px!important}
 
-#side_bar .left_menu_nav_wrap{margin:8px 5px 0!important;padding:12px 0 2px!important}
+#side_bar .left_menu_nav_wrap{margin:8px 10px 0 0!important;padding:12px 0 2px!important}
 #side_bar .WideSeparator--legalRecommendationsLink{margin:9px 6px 12px!important}
 #side_bar .LegalRecommendationsLinkLeftMenuAuthorized{margin:0 6px!important}
 html.mb #side_bar ol li>:last-child:not(:only-child){left:-30px}
@@ -1691,13 +1691,14 @@ html.Pl.mm #side_bar_inner{margin:calc(var(--header-height) + 7px) 0 0 -16px!imp
 html.Pl.mb #side_bar_inner{margin:calc(var(--header-height) + 15px) 0 0 -1px!important}
 html.Pl.ns #side_bar_inner{margin:var(--header-height) 0 0 -16px!important;border-radius:0 0 20px 0!important}
 html.Pl.ns.mb #side_bar_inner:after{left:0;right:unset;background:var(--nsRightCorner)}
-html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin-left:-6px!important;margin-bottom:-4px!important;padding-left:6px!important;padding-bottom:4px!important}
-
 html.mm #layout_sidebar [class*=LeftMenu]>nav{width:44px!important;padding:6px 4px!important;margin-left:auto!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li{width:36px!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li>a{width:36px!important;padding:6px!important;justify-content:center;overflow:visible!important}
 html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__label],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__settings],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=separator],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=counter],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=Counter]{display:none!important}
 html.mm #layout_sidebar #ads_wrapper,html.mm #layout_sidebar [class*=Footer__root],html.mm #layout_sidebar [class*=LeftAds],html.mm #layout_sidebar [class*=LeftMenu]>nav~*{display:none!important}
+
+html.mb #layout_sidebar [class*=LeftMenu]>nav{margin-right:10px!important}
+html.mb #layout_sidebar [class*=LeftMenu]>nav :is(a,[class*=LeftMenuItem__root],[class*=LeftMenuItem__container]){border-radius:10px!important}
 
 html.mm #side_bar ol li>:first-child{width:20px!important;box-sizing:content-box!important}
 .left_menu_nav_wrap .ui_actions_menu_wrap .ui_actions_menu{top:initial;bottom:31px}
