@@ -1697,7 +1697,8 @@ html.mm #layout_sidebar [class*=LeftMenu]>nav ol>li>a{width:36px!important;paddi
 html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__label],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=LeftMenuItem__settings],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=separator],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=counter],html.mm #layout_sidebar [class*=LeftMenu]>nav [class*=Counter]{display:none!important}
 html.mm #layout_sidebar #ads_wrapper,html.mm #layout_sidebar [class*=Footer__root],html.mm #layout_sidebar [class*=LeftAds],html.mm #layout_sidebar [class*=LeftMenu]>nav~*{display:none!important}
 
-html.mb #layout_sidebar [class*=LeftMenu]>nav{position:relative;border-radius:var(--vkui--size_border_radius_paper--regular)!important;margin-left:-6px!important;margin-bottom:-4px!important;padding-left:6px!important;padding-bottom:4px!important}
+html.mb #layout_sidebar [class*=LeftMenu]>nav{margin-right:10px!important}
+html.mb #layout_sidebar [class*=LeftMenu]>nav :is(a,[class*=LeftMenuItem__root],[class*=LeftMenuItem__container]){border-radius:10px!important}
 
 html.mm #side_bar ol li>:first-child{width:20px!important;box-sizing:content-box!important}
 .left_menu_nav_wrap .ui_actions_menu_wrap .ui_actions_menu{top:initial;bottom:31px}
