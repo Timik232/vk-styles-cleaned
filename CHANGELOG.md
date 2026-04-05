@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.4] - 2026-04-05
+
+### Fixed
+- Исправлен внешний вид фиксированной боковой панели: убрана квадратная подложка после клипа, обрезка обводки перенесена на внутренний контейнер меню
+
+### Changed
+- Обновлена версия расширения до `2.0.8.4`
+
 ## [2.0.8.3] - 2026-04-05
 
 ### Fixed
