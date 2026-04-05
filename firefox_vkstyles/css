@@ -1663,6 +1663,7 @@ html.rm .nim-dialog.nim-dialog_selected{box-shadow:inset 3px 0 0 0 var(--g3)}
 
 html.mf #side_bar{position:sticky;top:0!important;overflow:visible}
 html.mf #layout_sidebar{position:sticky;top:var(--spa-layout-header-height,48px);align-self:flex-start;overflow:visible}
+html.mf #layout_sidebar.stLayoutWrapper__sidebarFixed{max-height:calc(100vh - 198px)!important;overflow:hidden;padding:0 150px 150px;margin:0 -150px -150px}
 html.mf #side_bar_inner{max-height:none;overflow:visible;margin-left:0!important}
 html.mf.ns #side_bar_inner,html.mf.mb #side_bar_inner,html.mf.mm #side_bar_inner,html.mf.ns.mb #side_bar_inner,html.mf.mb.mm #side_bar_inner,html.mf.ns.mm #side_bar_inner{margin-left:0!important}
 #side_bar_inner{height:fit-content!important;margin:calc(var(--header-height) + 7px) 0 0 -15px!important;padding:8px 5px 8px 6px!important}

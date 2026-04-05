@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.3] - 2026-04-05
+
+### Fixed
+- Исправлены стробы фона в Chromium-версии: восстановлена формула усиления яркости по аудиоамплитуде, чтобы снова появлялись белые вспышки под музыку
+
+### Changed
+- Обновлена версия расширения до `2.0.8.3`
+
 ## [2.0.8.2] - 2026-04-05
 
 ### Fixed
