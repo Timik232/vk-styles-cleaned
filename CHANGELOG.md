@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.2] - 2026-04-05
+
+### Fixed
+- Исправлена обводка активного пункта в боковой панели: возвращено ограничение контейнера `#layout_sidebar.stLayoutWrapper__sidebarFixed`, чтобы свечение не выходило за границы
+
+### Changed
+- Обновлена версия расширения до `2.0.8.2`
+
 ## [2.0.8.1] - 2026-04-05
 
 ### Fixed
