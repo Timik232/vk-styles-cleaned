@@ -5,6 +5,22 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.9] - 2026-04-06
+
+### Fixed
+- Увеличена интенсивность белых вспышек стробов: коэффициент яркости усилен на ~40% для более заметного визуального эффекта
+
+### Changed
+- Обновлена версия расширения до `2.0.8.9`
+
+## [2.0.8.8] - 2026-04-05
+
+### Fixed
+- Добавлен внутренний отступ и клип для fixed-боковой панели, чтобы обводка активного пункта не выходила за границы блока
+
+### Changed
+- Обновлена версия расширения до `2.0.8.8`
+
 ## [2.0.8.7] - 2026-04-05
 
 ### Fixed
