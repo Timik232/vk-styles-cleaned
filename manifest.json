@@ -1,21 +1,21 @@
 {
-	"version": "2.0.7.1",
+	"version": "2.0.8",
 	"name": "__MSG_name__",
 	"short_name": "VK Styles Clean",
 	"description": "__MSG_description__",
 	"author": "Claude Opus 4.6",
 	"default_locale": "en",
 	"permissions": [ "tabs", "scripting", "contextMenus", "storage" ],
-	"host_permissions": [ "https://vk.com/*", "https://*.vk.com/*" ],
+	"host_permissions": [ "https://vk.com/*", "https://*.vk.com/*", "https://vk.ru/*", "https://*.vk.ru/*" ],
 	"optional_permissions": [ "activeTab" ],
 	"background": { "service_worker": "0.js" },
 	"content_scripts": [ {
 		"js": [ "1.js" ],
-		"matches": [ "https://vk.com/*", "https://*.vk.com/*" ],
+		"matches": [ "https://vk.com/*", "https://*.vk.com/*", "https://vk.ru/*", "https://*.vk.ru/*" ],
 		"run_at": "document_start"
 	}, {
 		"js": [ "2.js" ],
-		"matches": [ "https://vk.com/*", "https://*.vk.com/*" ],
+		"matches": [ "https://vk.com/*", "https://*.vk.com/*", "https://vk.ru/*", "https://*.vk.ru/*" ],
 		"run_at": "document_start",
 		"world": "MAIN"
 	} ],
@@ -31,5 +31,5 @@
 		"128": "i/128.png"
 	},
 	"manifest_version": 3,
-	"web_accessible_resources": [ { "resources": ["2.js", "css", "mcss", "i/*"], "matches": [ "https://vk.com/*", "https://*.vk.com/*" ] }]
+	"web_accessible_resources": [ { "resources": ["2.js", "css", "mcss", "i/*"], "matches": [ "https://vk.com/*", "https://*.vk.com/*", "https://vk.ru/*", "https://*.vk.ru/*" ] }]
 }
