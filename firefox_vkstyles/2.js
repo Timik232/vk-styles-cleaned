@@ -897,7 +897,7 @@ eq:()=>{				//log('EQ start');
 		if(vbs||vbr||vbt||vba||vbb){
 			let average=0,af=new Uint8Array(1),at=new Uint8Array(1024);ac.b.getByteFrequencyData(af);ac.b.getByteTimeDomainData(at);dsc=1;for(let i=0;i<1024;i++)average+=Math.abs(at[i]-128);average/=1024;
 			if(vbr){let t=+new Date;if(vbrt<t-(151-vbr)*20||vbrt<t-(150-vbr)&&average>64-vbr/2){let f=rgb.firstChild.values.baseVal,s=.8-(vbR*.008),v=[[1.2,s,s],[1,s,1],[s,s,1.2],[s,1,1],[s,1.2,s],[1,1,s]],a=v[vbrc+=vbrc>4?-5:1];vbrt=t;f[0].value=a[0];f[6].value=a[1];f[12].value=a[2]}}
-			cpb.style.cssText=(vba||vbt?'transform:'+(vba?' scale('+(1+af[0]/2048*vba/100)+')':' scale(1.01)')+(vbt?' rotateZ('+(rnd(-average,average)/25*vbt/100)+'deg)':'')+';':'')+(vbs||vbr||vbb?'filter:'+(vbr?'url(#rgb)':'')+(vbs?' brightness('+(1+average/5000*vbs)+') contrast('+(1+average/20000*vbs)+')':'')+(vbb?' blur('+(Math.exp(Math.max(0,af[0]-225+vbb/2,average-50+vbb/4)/30)-1)+'px)':''):'')
+			cpb.style.cssText=(vba||vbt?'transform:'+(vba?' scale('+(1+af[0]/2048*vba/100)+')':' scale(1.01)')+(vbt?' rotateZ('+(rnd(-average,average)/25*vbt/100)+'deg)':'')+';':'')+(vbs||vbr||vbb?'filter:'+(vbr?'url(#rgb)':'')+(vbs?' brightness('+(1+average/3000*vbs)+') contrast('+(1+average/20000*vbs)+')':'')+(vbb?' blur('+(Math.exp(Math.max(0,af[0]-225+vbb/2,average-50+vbb/4)/30)-1)+'px)':''):'')
 		}else if(dsc){
 			dsc=0;cpb.style.cssText=''
 		}
