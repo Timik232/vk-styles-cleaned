@@ -5,6 +5,14 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.1] - 2026-04-05
+
+### Fixed
+- Исправлены стробы фона: возвращена рабочая формула яркости из проверенного референса, чтобы при включении фон снова светился ярче в такт музыке
+
+### Changed
+- Обновлена версия расширения до `2.0.8.1`
+
 ## [2.0.8] - 2026-04-05
 
 ### Added
