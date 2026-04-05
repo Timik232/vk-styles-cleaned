@@ -94,7 +94,7 @@ jobs:
           # atob() is allowed only inside the existing atou() helper in the main builds
           ATOB_MATCHES=$(grep -rPn '\batob\s*\(' --include="*.js" --include="*.mjs" $JS_SCAN_PATHS 2>/dev/null || true)
           if [ -n "$ATOB_MATCHES" ]; then
-            INVALID_ATOB=$(printf "%s\n" "$ATOB_MATCHES" | grep -vP '^\./(2\.js|firefox_vkstyles/2\.js):.*atou=' || true)
+            INVALID_ATOB=$(printf "%s\n" "$ATOB_MATCHES" | grep -vP '^(?:\./)?(2\.js|firefox_vkstyles/2\.js):.*atou=' || true)
           else
             INVALID_ATOB=""
           fi

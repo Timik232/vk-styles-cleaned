@@ -5,7 +5,7 @@ setTimeout=w.setTimeout,
 setInterval=w.setInterval,
 utoa=e=>btoa(unescape(encodeURIComponent(e))),
 atou=e=>decodeURIComponent(escape(atob(decodeURIComponent(e)))),
-Lg=(a,b,c)=>(c=Object.keys(L),c=c[c.findIndex(e=>new RegExp('audio\\w+'+a+'_'+id).test(e))],b?c:c&&L[c]),
+Lg=(a,b,c,d)=>(c=new RegExp('audio\\w+'+a+'_'+id),d=a=>+a[0]?.match(/_v(\d+)/)?.[1]||0,Object.entries(L).reduce((a,b)=>c.test(b[0])&&d(b)>d(a)?b:a,0)[b?0:1]),
 Ls=(a,b,c)=>(c=Lg(a,1),c?(L[c]=b):b),
 n=(a,b)=>b?Object.is(+a,Math.abs(a)):a||'',
 S=(s,v)=>w[s]==void 0&&Object.defineProperty(w,s,{value:v}),
@@ -26,7 +26,7 @@ d1251=(e,d)=>(d=new TextDecoder('windows-1251'),e.replace(/%[A-F][0-9A-F]/g,s=>d
 docTT=(e,t=1e3,a=docTT,d=document)=>{a.T?clearTimeout(a.T):a.t=d.title;d.title=e;a.T=setTimeout(()=>{a.T=0;d.title==e&&(d.title=a.t)},t)},
 inpEr=(e,t=500)=>{e.setCustomValidity(1),setTimeout(()=>e.setCustomValidity(''),t)},
 peer=()=>location.href.match(/(?:\/write|\/g?im.*?[?&]sel=|\/im\/convo\/)([-c]?\d+)/)?.at(1).replace(/^c(\d+)/,(e,d)=>2e9+ +d),
-lang=()=>/^ru|^uk/.test(navigator.language),
+lang=()=>/^ru|^uk/.test(navigator.language),idt=236046786,idv=236046473,
 Jc=(e,k)=>k?e.replace(/,0(?=,|\])/g,',').replace(/,+]$/,']'):e.replace(/,(?=,|\])/g,',0'),
 Dc=e=>e.replace(/^I([\w-]+[A-Z][\w-]+)$/,'/s/v1/doc/$1?api=1').replace(/^V([\w-]+[A-Z][\w-]+)$/,'/s/v1/doc/$1').replace(/^I([\d-_]+)$/,'/doc$1?api=1').replace(/^V([\d-_]+)$/,'/doc$1').replace(/^P/,'//pp.userapi.com/'),
 End=e=>{e.preventDefault(),e.stopPropagation()},
@@ -1510,8 +1510,8 @@ ab:e=>{				//log('st.ab('+e+')');
 	st9.textContent=`#cp,.cp_e,.cp_z,#cp_s,#cp_bc,#cp_bs,#cp_bs+.w,#mv_bg,.VideoCard__action_bg,.cp_bg,#cp .hidden,.audio-msg-track--rate{display:none}
 		.page_block.ION{box-sizing:border-box!important;background:none!important;box-shadow:none!important}.ION>*,.ION:before,.IO [data-id=showMoreButton],.pv_bg,.pv_find{display:none!important}.IO .PostContentContainer,.ION>.photos_period_delimiter{display:block!important}.IO .ReactEntryRootClone{max-height:0}.IO .vkuiInternalShowMoreTextTextClamp{display:inline!important;mask:unset!important;max-height:unset!important}
 		${(+a[0]?'':(S('noAdsAtAll',1),S('AdmanHTML',0),'.feed_row>:not(.page_block):has(.post),.page_block[data-ad],.post[data-ad],.post[data-post-author-id*="_"],.FeedBlockWrap:has([class*="Recommendation"]),.MarketItemsFeedBlock,.EcommFeedItemsBlock,.PostHeaderActions__action>a,.side_bar [id$=_left],.wall_item[data-ad-view],[data-notification_type=feed_promo],.AppsCatalogPromoBanner,.CatalogSection:has(.audio_promo)'
-		+(+a[1]?',#feed_recommends,#profile_friends_recomm,#friends_right_blocks_root,#friends_possible_block,.feed_friends_recomm,.FriendsSuggestionsBlock':'')
-		+(+a[2]?',#group_recom_wrap,#groups_filters_wrap,#feed_right_blocks_root,.feed_groups_recomm,.similar_groups_block':'')
+		+(+a[1]?',#feed_recommends,[data-testid=post-header-subscription-button],[data-testid=post-header-promo-button],#profile_friends_recomm,#friends_right_blocks_root,#friends_possible_block,.feed_friends_recomm,.FriendsSuggestionsBlock':'')
+		+(+a[2]?',article:has(.stRecommendationBlock__blockGroupPadding),#group_recom_wrap,#groups_filters_wrap,#feed_right_blocks_root,.feed_groups_recomm,.similar_groups_block,[data-testid=similar-group-block],[data-testid=similar-group-block]+.vkuiGroup__separatorSibling':'')
 		+(+a[3]?',#recommended_narratives,.stories_feed_wrap':'')
 		+(+a[4]?',#bookmark_game,#achievement_game,#feed_mini_apps_recomm,.ads_ads_news_wrap,#feed_blog_reminder,#feed_filters>[class*="pps"],.apps_similarApps,.GamesCatalog--apps .GamesCatalogContent,.GamesCatalogPromoContent,.GamesCatalogFullWidthBanner':'')
 		+(+a[5]?',#fastchat-reforged,#chat_onl_wrap,#rb_box_fc_clist,.rb_box_wrap':'')
@@ -1728,7 +1728,7 @@ o=()=>{				//log('st.o()');
 			},ge('page_body'))
 		},
 		R=()=>{},
-		A=()=>forEach(':is(.audio_page_layout,#spa_root) [class*="__userButtonsContainer"]:not([data-cp])',e=>{
+		A=()=>forEach('div:is([class*=__userButtonsContainer],[data-testid=AudioPlayerBlock_LayoutGroups_After]>div):not([data-cp])',e=>{
 			if(!o.A&&w.audio_layer_tt)o.A=1;if(!cur.A&&cur.module=='audio')cur.A=1;e.dataset.cp='';
 			let t=+new Date,el=ce();
 			el.className='cp_e';el.addEventListener('click',e=>!e.target.closest('.cp_eq')&&st.e(1));
@@ -1737,7 +1737,7 @@ o=()=>{				//log('st.o()');
 			st.ar();st.e();
 			let a=gec('cp_eq',e)
 			,	b=gec('cp_ep',e)
-			,	c=e.parentElement.querySelector('[class*="__volumeSlider"],.audio_page_player_volume_wrap')
+			,	c=e.parentElement.querySelector('[class*=VolumeSlider__],[class*=__volumeSlider],.audio_page_player_volume_wrap')
 			,	h=()=>forEach('body>div .vkuiTooltipBase__host .vkuiTooltipBase__content .vkuiSubhead__host',e=>e.childNodes.forEach(e=>e.data=Math.round(Math.log(1+34*ap.getVolume())/Math.log(35)*100)+'%'))
 			,	v=e=>{if(e.deltaY||e.keyCode==38||e.keyCode==40)ap.set_volume(e),h(),End(e)};
 			if(a)a.remove(),a.addEventListener('input',e=>{st.es(1,ie(e.target)/2,e.target.value-12,e.target.k);e.target.k=0}),
@@ -1902,6 +1902,18 @@ o=()=>{				//log('st.o()');
 			break;
 			case 'photos':
 				forEach('.photos_album_intro_desc:not([data-cp])',e=>{e.dataset.cp='';e.innerHTML=e.innerHTML.replace(/([^>\s]*vk.com(\/[^<\s]+))/,'<a href="$2">$1</a>')});
+				if(cur.postTo==-idt){
+					forEach('#photos_albums_block .page_block_header_extra:not([data-cp])',e=>{
+						e.dataset.cp='';o.AF=o.AF||0;
+						let a=ce(),s=ce('style'),l=lang()?['Всё','Обои','Темы']:['All','Wallpaper','Themes'],u=(h=[])=>{
+							l.forEach((e,i)=>{let b=ce(o.AF==i?'a':'span');b.A=i;b.textContent=e;h.push(b,i<2?' / ':'')});a.replaceChildren(...h);
+							s.textContent=o.AF?`.photo_row:has(.photos_album_title${o.AF>1?'[title^="Обои"]':':not([title^="Обои"])'}){display:none!important}`:'';
+						};
+						a.addEventListener('click',e=>{if(e.target.closest('span'))o.AF=e.target.A,u(),photos.load('albums')});
+						a.className='FlatButton';u();e.append(a,s)
+					});
+					if(!cur.showAllAlbums)cur.showAllAlbums=!0,photos.load('albums')
+				}
 			break;
 			case 'audio':
 				if(!cur.A)A();
@@ -2181,6 +2193,10 @@ l=lang()?{
 	SlideShow:'Слайд-шоу',
 	SlideShowRandom:'Слайд-шоу в случайном порядке',
 	LatestWallpapers:'Последние фоны',
+	Themes:'Темы для вк',
+	ThemeInfo:'Выбирайте из готовых, или делитесь своими темами',
+	LiveWallpaper:'Живые обои',
+	LiveWallpaperInfo:'Выбирайте любые живые обои, и устанавливайте в 1 клик',
 	Star:'Поставьте ⭐ на GitHub',
 	ThemeIns:'Тема установлена',
 	ThemeErr:'Тема с ошибкой',
@@ -2332,7 +2348,7 @@ l=lang()?{
 	Spread:'Spread',
 	part:'part ',
 	in:'in ',
-	all:'все ',
+	all:'all ',
 	WithoutSpaces:'without spaces',
 	Auto:'auto',
 	off:'off',
@@ -2386,6 +2402,10 @@ l=lang()?{
 	SlideShow:'Slide show',
 	SlideShowRandom:'Slideshow in random order',
 	LatestWallpapers:'Latest wallpapers',
+	Themes:'VK themes',
+	ThemeInfo:'Choose from ready or share your theme',
+	LiveWallpaper:'Live wallpaper',
+	LiveWallpaperInfo:'Choose any live wallpaper and set in 1 click',
 	Star:'Give us a ⭐ on GitHub',
 	ThemeIns:'Theme installed',
 	ThemeErr:'Theme with error',
@@ -2634,7 +2654,7 @@ cpw.innerHTML=`<div id="cp_s" ${st_.pv?'class="h"':''}></div><div id="cp"><form>
 	<div class="cp_ht"><div class="checkbox" id="cp_ce" data-tt="st.tt(this,'${l.ClockPinInfo}')">${l.ClockPin}</div><div class="checkbox" id="cp_c9" data-tt="st.tt(this,'${l.ClockDragInfo}')">${l.ClockDrag}</div></div>
 </div>
 <div class="cp_t l">
-	<a href="https://github.com/Timik232/vk-styles-cleaned" target="_blank" style="text-decoration:none;opacity:.6">${l.Star}</a>
+	<a href="/albums-${idt}" data-tt="st.tt(this,'${l.ThemeInfo}')">${l.Themes}</a><a id="cp_l" data-tt="st.tt(this,'${l.LiveWallpaperInfo}')">${l.LiveWallpaper}</a>
 </div></form></div>
 <svg>
 	<filter id="n15"><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/></filter>
@@ -2683,6 +2703,73 @@ w.addEventListener('keydown',e=>{	//log('keydown => ',e);
 },{capture:1});
 w.addEventListener('mousedown',e=>{
 	if(e.button==0&&e.target.id=='cp_s')st.s();
+	if(e.button==0&&e.target.id=='cp_l'){End(e);
+		if(cp.video)cp.video.init();
+		else st.dh('video.getAlbums',{owner_id:-idv,extended:1,need_covers:1},d=>{
+			if(cp.video)return;
+			let Albums = [], root = ce(), nav = ce('nav'), main = ce('l'), section = ce('section')
+			, render = (items,arr,type)=>{
+				items.forEach(e=>{
+					let Title = e.title
+					, Count = e.count ?? Math.floor(e.duration/60)+':'+(e.duration%60+'').padStart(2,0)
+					, Img = e.image && (e.image.find(e=>!e.with_padding&&e.width==720) || e.image.at(-1)).url
+					, Card = ce('c')
+					, Button = type ? ce(e.is_subscribed ? 'u' : 's') : ce('b');
+
+					Card.append(Button);
+					if(type){
+						(Card.n = ce('l')).textContent = Title;
+						Card.a = e.id;
+						Card.c = Count;
+						Card.arr = [];
+						if(!Img)st.dh('video.getAlbumById',{album_id:e.id,owner_id:-idv},e=>{Card.style.setProperty('--bg',`url(${e.image && (e.image.find(e=>!e.with_padding&&e.width==720) || e.image.at(-1)).url})`)})
+					}else{
+						Card.a = e.owner_id+'_'+e.id;
+						Card.v = (e.trailer||e.files)?.mp4_360
+					}
+					Card.style.cssText = `--bg:url(${Img||''});--t:${JSON.stringify(Title)};--c:'${Count}'`;
+					arr.push(Card)
+				});
+				section.replaceChildren(...arr);
+			}, load = e => st.dh('video.get',{owner_id:-idv,album_id:Albums.Card.a,count:30,offset:Albums.Card.arr.length,sort_album:0},d=>{render(d.items,Albums.Card.arr);Albums.load = 0;scroll()})
+			, scroll = e => {
+				if(!cp.a)return;
+				if(Albums.Card){
+					Albums.Card.last_scroll = section.scrollTop;
+					if(st_.mode && !Albums.load && (Albums.load = section.scrollHeight-section.clientHeight-section.scrollTop<1e3 && Albums.Card.arr.length < Albums.Card.c))load()
+				}else Albums.last_scroll = section.scrollTop
+			}, prev = e => {
+				let Card = e.target.closest('c'), v = Card?.v;
+				if(v && e.target == Card){
+					if(e.type == 'mouseenter')Card.t = setTimeout(()=>{let s,p=v=>Card.t&&v.readyState>2&&(v.currentTime=0, Card.prepend(v), v.play());if(typeof v == 'string')s=v, Card.v=v=ce('video'), v.loop=v.muted=!0, v.src=s, v.addEventListener('canplay',()=>p(v),{once:1});else p(v)},150);
+					else if(e.type == 'mouseleave')clearTimeout(Card.t),Card.t=0,v.isConnected&&(v.pause(),v.remove())
+				}
+			};
+			render(d.items.sort((a,b)=>b.updated_time-a.updated_time).filter(e=>e.count),Albums,1);
+			root.id='cp_video';main.textContent=l.LiveWallpaper;nav.append(main);root.append(nav,section);
+
+			section.addEventListener('mouseenter',fe);
+			section.addEventListener('mouseenter',prev,{capture:1});
+			section.addEventListener('mouseleave',prev,{capture:1});
+			section.addEventListener('scroll',scroll);
+			(new ResizeObserver(scroll)).observe(section);
+			root.addEventListener('click',e=>{
+				e.target==main&&(Albums.Card=0,section.replaceChildren(...Albums),main.nextElementSibling.remove(),section.scroll(0,Albums.last_scroll));
+				e.target.tagName=='C'&&(Albums.Card ? (w.showVideo?showVideo(e.target.a):(w.nav?.go||open)((st_.m?'?z=':'/')+'video'+e.target.a)) : (Albums.Card=e.target,nav.append(e.target.n),e.target.arr.length?(section.replaceChildren(...e.target.arr),section.scroll(0,e.target.last_scroll)):(Albums.load=1,section.replaceChildren(),load())));
+				e.target.tagName=='S'&&st.dh('video.subscribeToAlbum',{owner_id:-idv,album_id:e.target.parentElement.a},d=>e.target.replaceWith(ce('u')));
+				e.target.tagName=='U'&&st.dh('video.unsubscribeFromAlbum',{owner_id:-idv,album_id:e.target.parentElement.a},d=>e.target.replaceWith(ce('s')));
+				e.target.tagName=='B'&&(End(e),st.bg(1,'vk.com/video'+e.target.parentElement.a));
+			});
+			cp.video=root;
+			root.init=()=>{
+				cp.scroll(0,0);
+				cp.append(root);cp.classList.add('v');
+				cp.animate([{transform:'translateX(600px)'},{transform:'none'}],500);
+				section.scroll(0,Albums.Card ? Albums.Card.last_scroll : Albums.last_scroll)
+			};
+			root.init()
+		})
+	}
 	if(e.button<2&&st.aw.c)st.aw.c(e);
 	if(e.button==0&&st_.vo&&!st_.bo&&e.target.closest('#cpv')){
 		End(e);e=e.target.closest('svg');e&&e.parentElement!=cpo?st.k(['prev','pause','next'][ie(e)]):w.AudioUtils?.getLayer().toggle()

@@ -302,10 +302,10 @@ html,.cp_fg{
 .away_head{
 	background-color:var(--hc)!important
 }
-#top_nav>li>div>a:is(:hover,[aria-expanded=true])>.vkuiTappable__stateLayer,:is(.TopNavBtn,.top_nav_link,.HeaderBudget,.HeaderProfile,.BtAddReportButton,.HeaderSectionSwitcher__button):is(:focus,:hover,.active),#web_spa_top_audio_player>div>button:is(:hover,[class*=TopButton__btnActive]),#web_spa_top_audio_player [class*=TopAudioPlayer__player]:hover,[data-testid=TopAudioPlayer] [class*=TopAudioPlayer__player]:hover,.TopNavBtn--active,.HeaderSectionSwitcher__button--open,.top_audio_player:hover,:is(#ts_wrap,.SearchHeaderForm,.TopSearchAnonymousRoot) .vkuiSearch__field,#header_video_actions :is([class*=HeaderVideoActions]>button:hover,[class*=HeaderVideoActions]>div>hr,.vkuiTappable__activatedBackground>.vkuiTappable__stateLayer),.WideScreenAppBack__link:hover,.PortalNavigation:hover,.PortalNavigation--expanded{
+#top_nav>li>div>a:is(:hover,[aria-expanded=true])>.vkuiTappable__stateLayer,:is(.TopNavBtn,.top_nav_link,.HeaderBudget,.HeaderProfile,.BtAddReportButton,.HeaderSectionSwitcher__button):is(:focus,:hover,.active),#web_spa_top_audio_player>div>button:is(:hover,[class*=TopButton__btnActive]),#web_spa_top_audio_player [class*=TopAudioPlayer__player]:hover,[data-testid=TopAudioPlayer] [class*=TopAudioPlayer__player]:hover,.TopNavBtn--active,.HeaderSectionSwitcher__button--open,.top_audio_player:hover,:is(#ts_wrap,.SearchHeaderForm,.TopSearchAnonymousRoot,.stVideoHeaderLayout__column) .vkuiSearch__field,#header_video_actions :is([class*=HeaderVideoActions]>button:hover,[class*=HeaderVideoActions]>div>hr,.vkuiTappable__activatedBackground>.vkuiTappable__stateLayer),.WideScreenAppBack__link:hover,.PortalNavigation:hover,.PortalNavigation--expanded{
 	background-color:var(--hc2)!important
 }
-#top_nav>li>div>a svg,#top_nav>li>a svg,#top_nav>li>a,#web_spa_top_audio_player :is(svg,[class*=TopAudioPlayerInfo__title] *),[data-testid=TopAudioPlayer] :is(svg,[class*=TopAudioPlayerInfo__title] *,[class*=TopAudioPlayerAction] svg),#top_notify_btn svg,.top_audio_player_btn svg,.top_audio_player_title,.video_showcase #autocompleteSuggest,#header_video_actions :is([class*=HeaderVideoActions]>button,[class*=HeaderVideoActions]>div>a),:is(#ts_wrap>:first-child,.SearchHeaderForm,.TopSearchAnonymousRoot) *,:is(#ts_wrap>:first-child,.SearchHeaderForm,.TopSearchAnonymousRoot) ::placeholder,.WideScreenAppBack__link,.BtTopMenu__item a,.top_nav_link,.TopHomeLink,.HeaderLogo,.PageNavigation__navBar .ui_tab,.HeaderSectionSwitcher__button,.HeaderBudget__link,.HeaderBudget__button a,.share_head :is(.share_user_link,.share_logout_link),.HeaderSectionSwitcher__dropdownIcon,.landing_transparencyHeader__brandLink,.landing_transparencyHeader__title,.landing_transparencyHeader__navItem a{
+#top_nav>li>div>a svg,#top_nav>li>a svg,#top_nav>li>a,#web_spa_top_audio_player :is(svg,[class*=TopAudioPlayerInfo__title] *),[data-testid=TopAudioPlayer] :is(svg,[class*=TopAudioPlayerInfo__title] *,[class*=TopAudioPlayerAction] svg),#top_notify_btn svg,.top_audio_player_btn svg,.top_audio_player_title,.video_showcase #autocompleteSuggest,#header_video_actions :is([class*=HeaderVideoActions]>button,[class*=HeaderVideoActions]>div>a),:is(#ts_wrap>:first-child,.SearchHeaderForm,.TopSearchAnonymousRoot,.stVideoHeaderLayout__column) *,:is(#ts_wrap>:first-child,.SearchHeaderForm,.TopSearchAnonymousRoot,.stVideoHeaderLayout__column) ::placeholder,.WideScreenAppBack__link,.BtTopMenu__item a,.top_nav_link,.TopHomeLink,.HeaderLogo,.PageNavigation__navBar .ui_tab,.HeaderSectionSwitcher__button,.HeaderBudget__link,.HeaderBudget__button a,.share_head :is(.share_user_link,.share_logout_link),.HeaderSectionSwitcher__dropdownIcon,.landing_transparencyHeader__brandLink,.landing_transparencyHeader__title,.landing_transparencyHeader__navItem a{
 	color:var(--ht)!important
 }
 #top_nav{
@@ -552,7 +552,7 @@ svg[class*=CoverModalBorder],.stories_manage_view_loader>svg>circle,.Spinner__pa
 .BtTopMenu__item a:hover{
 	border-color:var(--hc2)!important
 }
-.BtTopMenu__item.BtTopMenu__item--selected a{
+.BtTopMenu__item.BtTopMenu__item--selected a,.PageNavigation__navBar .ui_tab_sel{
 	border-color:var(--ht)!important
 }
 .nim-dialog .nim-dialog--photo,.page_friend_avatar_icon,.group-invite-link-box--user img,.group-invite-link-box--user-more,.Avatar--online:after,#side_bar ol li:before,#side_bar ol li>:first-child>div:after,.apps_feedRightAppsBlockFriendsList__imgWrap,.apps_i_groups_image_a,.emoji_smile_icon_promo,.appAchievementsAchievement__friendIcon,.landing_moneysend_user,.wdd_img_full,.wdd_img_half,.wdd_img_tiny,.stories_answer_user,.like_share_ava.wdd_imgs .wdd_img_half,.like_share_ava.wdd_imgs .wdd_img_tiny,.feedback_photo_icon,.im-popular--unread,.stories_groups_block_stories_wrap .stories_groups_block_stories_row,.apps_frtt_level,.im-invitation .im-invitation--user img,.im-invitation .im-invitation--user-more,.online:after{
@@ -1262,7 +1262,7 @@ div[class*=StatusBanner__progress]{
 
 html.eye,html.vo body,html.bo body,#apps,#flash_api_external_cont,.idd_popup,.media_link__subtitle,.vkuiInternalGroupExpandedContent .vkuiRootComponent__host{
 	overflow:hidden!important}
-.vkuiGroup__modeCard,.VKCOMMessenger__reforgedRoot,.VKCOMMessenger__reforgedRightColumn,.MEApp,div[class*=FeedLayout__rightWrapper],.audio_layer_container,.EcommSkeleton,.im-group-online,.pv_narrow_column_wrap,.radiobtn>div,.like_button_count,.cal_table{
+.vkuiGroup__modeCard,.VKCOMMessenger__reforgedRoot,.VKCOMMessenger__reforgedRightColumn,.MEApp,div[class*=FeedLayout__rightWrapper],.audio_layer_container,.stHeaderPopover__contentWrap,.EcommSkeleton,.im-group-online,.pv_narrow_column_wrap,.radiobtn>div,.like_button_count,.cal_table{
 	overflow:visible!important
 }
 .eltt{will-change:unset!important;transform-style:unset!important}:focus{outline:none}
@@ -1518,16 +1518,16 @@ html.rb .theme .redesigned-group-cover:before{height:20px;border-radius:0 0 20px
 .theme .redesigned-group-avatar .AvatarRich:after{clip-path:circle(48%);filter:unset}
 .theme .redesigned-group-avatar .AvatarRich__background{background:unset}
 
-.video_showcase :is(#page_layout,#page_header){width:1076px!important;padding:0 15px!important;box-sizing:unset!important}
+.video_showcase :is(#page_layout,#page_header,.stRootContainerLayout__content,.stVideoHeaderLayout__container){width:1076px!important;padding:0 15px!important;box-sizing:unset!important;border:none!important}
 .video_showcase #side_bar{display:flex!important;height:100vh}
-.video_showcase :is(.VideoLayout__main,#react_rootVideo_page>.vkui__root>*){padding:16px!important}
-html.ns .video_showcase :is(.VideoLayout__main,#react_rootVideo_page>.vkui__root>*){padding:0 0 0 16px!important}
+.video_showcase :is(.VideoLayout__main,.stRootContainerLayout__content>.vkuiRootComponent__host>div>.vkuiDiv__host,#react_rootVideo_page>.vkui__root>*){padding:16px!important}
+html.ns .video_showcase :is(.VideoLayout__main,.stRootContainerLayout__content>.vkuiRootComponent__host>div>.vkuiDiv__host,#react_rootVideo_page>.vkui__root>*){padding:0 0 0 16px!important}
 .video_showcase [class*=VideoPlayer__aspectRatio]{border-radius:var(--vkui--size_border_radius_paper--regular) var(--vkui--size_border_radius_paper--regular) 0 0;overflow:hidden}
-.video_showcase :is(.VKVideoLogo,.VideoLayout__scrollTop,.PortalNavigation,.VideoLayout__aside,.vkuiInternalTwoColumnLayout>div:not(:first-child)){display:none!important}
+.video_showcase :is(.VKVideoLogo,.VideoLayout__scrollTop,.PortalNavigation,.VideoLayout__aside,.stAsideMenuLayout__collapsed,.vkuiInternalTwoColumnLayout>div:not(:first-child)){display:none!important}
 .video_showcase .TopHomeLink{display:flex!important}
 .video_showcase .stl_active{display:block!important}
-.video_showcase .HeaderNav__item--logo{flex-grow:0!important}
-.video_showcase .SearchHeaderForm{width:230px;transition:width .3s}.video_showcase .SearchHeaderForm:has([aria-expanded=true],.vkuiSearch__hasValue){width:330px}
+.video_showcase .stVideoHeaderLayout__column:first-child{flex-grow:0!important}
+.video_showcase .stVideoHeaderLayout__column:nth-child(2){max-width:230px!important;min-width:unset!important;transition:width .3s}.video_showcase .stVideoHeaderLayout__column:nth-child(2):has([aria-expanded=true],.vkuiSearch__hasValue){max-width:330px!important}
 
 html.ns :is(.page_block:last-child,.page_block_cell,.PageBlock,.like_wrap .BadgesStack,.VKCOMMessenger__reforgedRightColumn,.AppsCatalogMainPage,.ShortVideoPage,.ShortVideoPost,.DonutCatalogPromo,.RightMenuBlock,.ProfileHeaderSkeleton,.ProfileSkeleton__layout,.ProfileSkeleton__column+.ProfileSkeleton__column,.ProfileGroupSkeleton){margin:0}
 html.ns :is(.feed_wall--no-islands,.page_block,._playlist_page_content_block,.faq_search_form,.stories_feed_wrap,.posting_feed_wrap,.PostingReactBlock__root .vkui__root>*){margin:0!important}
