@@ -5,6 +5,15 @@ All notable changes to VK Styles Clean will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.8.1] - 2026-04-13
+
+### Changed
+- Обновлена sidebar-логика фильтра скрытия в `2.js` для соответствия версии `vk styles 06 версия`
+
+### Fixed
+- Убрано принудительное окрашивание бейджа «добавить историю» в левом меню, чтобы вернуть поведение версии 06
+- Восстановлены стили счётчиков и иконок левого меню в `mcss` в соответствии с версией 06
+
 ## [2.0.8] - 2026-04-05
 
 ### Added
