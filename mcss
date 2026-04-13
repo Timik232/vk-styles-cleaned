@@ -111,7 +111,7 @@ html,.cp_fg{
 .Btn_theme_mono,.OwnerRow__img,.wide_link{
 	background-color:var(--n29e)!important
 }
-#LeftMenuRoot .vkuiCounter__host,.stLeftMenuItem__counter,.mm_counter,.mm_counter2,.Oval_type_minor{
+#LeftMenuRoot .vkuiCounter__host,.mm_counter,.mm_counter2,.Oval_type_minor{
 	background-color:var(--n29f)!important
 }
 .uMailWrite__attachedMsgs,.ReplyItem_active,.sel_selected,.sp_body,.sp_tab_selected,.sp_tab.sp_tab_selected:before,.found,.highlight,.match,.msg.msg_selected,.msg.msg_unread{
@@ -204,7 +204,7 @@ html::-webkit-scrollbar-button,html::-webkit-scrollbar-corner{display:none}
 .post__subscribeBtnIcon_subscribe,.i_signed,.author-page-icon,.notification__media[style*="vkpay_logo_notify.png"],.svgIcon-audio_player__play_blue_24,.svgIcon-audio_player__pause_blue_24,.svgIcon-audio_player__next_blue_28,.svgIcon-audio_player__close_blue_24,.pm_item .i_icon,.notify_item .i_gift,.page_verified,.Icon_star.Icon_blue:before,.snippet.snippet_type_podcast .snippet__favorite_active,.dropdown__item_toggler:after,.Icon_community_subscribed:before,.Icon_control_radio_checked:before,.Icon_audio_plus:before,.transfersHistoryEmptyBox__icon,.zpv_bottom .item_likes_me .i_like,.payment_opt .ii_icon,.PostHeader__repostIcon,.pic_from .i_copy{
 	filter:var(--hue)!important
 }
-.svgIcon,.vkuiIcon,#LeftMenuRoot svg,.stLeftMenuIcon__root svg,.like_wrap i,.i_views,.wi_actions_btn .i_icon{
+.svgIcon,#LeftMenuRoot svg,.like_wrap i,.i_views,.wi_actions_btn .i_icon{
 	filter:var(--ds)
 }
 .mhi_logo_text path{

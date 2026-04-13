@@ -1021,9 +1021,6 @@ svg[class*=PageWrapper__logo]{color:#fff3!important}
 #side_bar ol li>:first-child,#side_bar ol li>:first-child>span,#side_bar ol li>:first-child svg,#side_bar_inner>div>a,.left_menu_nav,.left_restore_link,.LeftMenuAppPromo__icon{
 	color:var(--mc)!important
 }
-#side_bar [class*=ProfileIndicatorBadge__badgeAddStory],#side_bar [class*=ProfileIndicatorBadge__badgeAddStory] *{
-	color:var(--mc)!important
-}
 .rdrMonthName,div[contenteditable=true],h1,h2,input,body{
 	color:var(--eee)
 }
